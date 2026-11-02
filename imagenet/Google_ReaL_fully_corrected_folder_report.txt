@@ -1,0 +1,313 @@
+================================================================================
+Google ReaL Labels FULLY CORRECTED Validation Folder Report
+================================================================================
+
+SOURCE
+--------------------------------------------------------------------------------
+Paper: Are we done with ImageNet?
+Authors: Lucas Beyer, Olivier J. Henaff, Alexander Kolesnikov, et al.
+Organization: Google Research
+Published: 2020
+URL: https://arxiv.org/abs/2006.07159
+GitHub: https://github.com/google-research/reassessed-imagenet
+
+FOLDERS
+--------------------------------------------------------------------------------
+Original (UNTOUCHED):     ILSVRC2012_img_val (50000 samples)
+Fully Corrected (NEW):    ILSVRC2012_img_val_Google_FULLY_CORRECTED (46837 samples)
+  - Already correct:      42164 samples (kept in same folder)
+  - Corrected:            4673 samples (moved to correct folder)
+Skipped (uncertain):      3163 samples
+
+STATISTICS
+--------------------------------------------------------------------------------
+Total original samples:         50,000
+Copied (all corrected):         46,837 (93.67%)
+  - Already correctly labeled:  42,164 (84.33%)
+  - Fixed (moved to correct):   4,673 (9.35%)
+Skipped (uncertain):            3,163 (6.33%)
+Multi-label samples:            7,443 (first valid label used)
+
+CORRECTED SAMPLES (First 100)
+--------------------------------------------------------------------------------
+Index    Filename                       Old Folder      New Folder     
+--------------------------------------------------------------------------------
+2        ILSVRC2012_val_00003014.JPEG   n01440764       n04067472      
+21       ILSVRC2012_val_00021740.JPEG   n01440764       n02536864      
+27       ILSVRC2012_val_00026064.JPEG   n01440764       n01443537      
+127      ILSVRC2012_val_00031720.JPEG   n01484850       n02066245      
+145      ILSVRC2012_val_00042345.JPEG   n01484850       n01491361      
+152      ILSVRC2012_val_00003183.JPEG   n01491361       n01484850      
+153      ILSVRC2012_val_00003204.JPEG   n01491361       n01484850      
+157      ILSVRC2012_val_00008108.JPEG   n01491361       n01484850      
+166      ILSVRC2012_val_00023935.JPEG   n01491361       n04251144      
+169      ILSVRC2012_val_00025133.JPEG   n01491361       n01494475      
+189      ILSVRC2012_val_00036420.JPEG   n01491361       n01484850      
+221      ILSVRC2012_val_00022552.JPEG   n01494475       n01491361      
+239      ILSVRC2012_val_00039588.JPEG   n01494475       n01484850      
+249      ILSVRC2012_val_00049166.JPEG   n01494475       n01484850      
+252      ILSVRC2012_val_00004698.JPEG   n01496331       n01498041      
+256      ILSVRC2012_val_00006554.JPEG   n01496331       n01498041      
+263      ILSVRC2012_val_00009420.JPEG   n01496331       n01498041      
+268      ILSVRC2012_val_00015555.JPEG   n01496331       n01498041      
+273      ILSVRC2012_val_00019531.JPEG   n01496331       n01491361      
+289      ILSVRC2012_val_00037260.JPEG   n01496331       n01917289      
+292      ILSVRC2012_val_00042245.JPEG   n01496331       n01498041      
+293      ILSVRC2012_val_00042751.JPEG   n01496331       n02071294      
+298      ILSVRC2012_val_00047589.JPEG   n01496331       n01498041      
+301      ILSVRC2012_val_00002284.JPEG   n01498041       n01496331      
+341      ILSVRC2012_val_00042175.JPEG   n01498041       n02077923      
+363      ILSVRC2012_val_00010208.JPEG   n01514668       n01514859      
+419      ILSVRC2012_val_00022644.JPEG   n01514859       n02018207      
+423      ILSVRC2012_val_00027762.JPEG   n01514859       n01514668      
+512      ILSVRC2012_val_00011249.JPEG   n01530575       n01592084      
+514      ILSVRC2012_val_00013512.JPEG   n01530575       n01534433      
+535      ILSVRC2012_val_00035540.JPEG   n01530575       n01534433      
+541      ILSVRC2012_val_00045172.JPEG   n01530575       n01558993      
+562      ILSVRC2012_val_00013407.JPEG   n01531178       n01530575      
+587      ILSVRC2012_val_00032359.JPEG   n01531178       n01530575      
+595      ILSVRC2012_val_00041836.JPEG   n01531178       n01530575      
+616      ILSVRC2012_val_00013209.JPEG   n01532829       n01531178      
+769      ILSVRC2012_val_00022186.JPEG   n01558993       n02843684      
+873      ILSVRC2012_val_00020905.JPEG   n01580077       n01530575      
+874      ILSVRC2012_val_00022106.JPEG   n01580077       n01560419      
+875      ILSVRC2012_val_00022505.JPEG   n01580077       n01537544      
+895      ILSVRC2012_val_00042248.JPEG   n01580077       n01582220      
+1022     ILSVRC2012_val_00021656.JPEG   n01601694       n02027492      
+1029     ILSVRC2012_val_00026023.JPEG   n01601694       n01843065      
+1038     ILSVRC2012_val_00038159.JPEG   n01601694       n01530575      
+1057     ILSVRC2012_val_00002444.JPEG   n01608432       n01614925      
+1059     ILSVRC2012_val_00006203.JPEG   n01608432       n03000134      
+1067     ILSVRC2012_val_00015746.JPEG   n01608432       n01614925      
+1072     ILSVRC2012_val_00023128.JPEG   n01608432       n01614925      
+1083     ILSVRC2012_val_00033214.JPEG   n01608432       n01614925      
+1100     ILSVRC2012_val_00000128.JPEG   n01614925       n01797886      
+1150     ILSVRC2012_val_00000018.JPEG   n01616318       n01608432      
+1163     ILSVRC2012_val_00012178.JPEG   n01616318       n01614925      
+1199     ILSVRC2012_val_00047350.JPEG   n01616318       n01608432      
+1253     ILSVRC2012_val_00001667.JPEG   n01629819       n01687978      
+1257     ILSVRC2012_val_00008542.JPEG   n01629819       n01632458      
+1260     ILSVRC2012_val_00009938.JPEG   n01629819       n01630670      
+1301     ILSVRC2012_val_00002774.JPEG   n01630670       n01632458      
+1305     ILSVRC2012_val_00005868.JPEG   n01630670       n01632458      
+1307     ILSVRC2012_val_00006582.JPEG   n01630670       n01631663      
+1318     ILSVRC2012_val_00015274.JPEG   n01630670       n01632458      
+1320     ILSVRC2012_val_00016422.JPEG   n01630670       n01689811      
+1321     ILSVRC2012_val_00016695.JPEG   n01630670       n02226429      
+1325     ILSVRC2012_val_00021017.JPEG   n01630670       n01632458      
+1328     ILSVRC2012_val_00023932.JPEG   n01630670       n01629819      
+1332     ILSVRC2012_val_00029854.JPEG   n01630670       n01629819      
+1333     ILSVRC2012_val_00031919.JPEG   n01630670       n01632458      
+1335     ILSVRC2012_val_00032864.JPEG   n01630670       n01631663      
+1336     ILSVRC2012_val_00033261.JPEG   n01630670       n01631663      
+1338     ILSVRC2012_val_00038449.JPEG   n01630670       n01631663      
+1339     ILSVRC2012_val_00038742.JPEG   n01630670       n01632458      
+1342     ILSVRC2012_val_00045101.JPEG   n01630670       n01629819      
+1344     ILSVRC2012_val_00046430.JPEG   n01630670       n01631663      
+1346     ILSVRC2012_val_00048046.JPEG   n01630670       n01632458      
+1347     ILSVRC2012_val_00048295.JPEG   n01630670       n01632458      
+1348     ILSVRC2012_val_00049350.JPEG   n01630670       n01632777      
+1358     ILSVRC2012_val_00006319.JPEG   n01631663       n01630670      
+1363     ILSVRC2012_val_00010254.JPEG   n01631663       n01630670      
+1366     ILSVRC2012_val_00011688.JPEG   n01631663       n01689811      
+1372     ILSVRC2012_val_00016864.JPEG   n01631663       n01630670      
+1376     ILSVRC2012_val_00022787.JPEG   n01631663       n01632458      
+1377     ILSVRC2012_val_00023450.JPEG   n01631663       n01685808      
+1379     ILSVRC2012_val_00027028.JPEG   n01631663       n01682714      
+1383     ILSVRC2012_val_00032323.JPEG   n01631663       n01630670      
+1384     ILSVRC2012_val_00032578.JPEG   n01631663       n01630670      
+1385     ILSVRC2012_val_00033437.JPEG   n01631663       n01630670      
+1448     ILSVRC2012_val_00048286.JPEG   n01632458       n01629819      
+1463     ILSVRC2012_val_00016441.JPEG   n01632777       n02526121      
+1493     ILSVRC2012_val_00044893.JPEG   n01632777       n01689811      
+1494     ILSVRC2012_val_00045553.JPEG   n01632777       n01689811      
+1514     ILSVRC2012_val_00016782.JPEG   n01641577       n01644373      
+1531     ILSVRC2012_val_00028041.JPEG   n01641577       n01644900      
+1532     ILSVRC2012_val_00028113.JPEG   n01641577       n01644900      
+1558     ILSVRC2012_val_00007977.JPEG   n01644373       n01644900      
+1567     ILSVRC2012_val_00017989.JPEG   n01644373       n01641577      
+1568     ILSVRC2012_val_00020059.JPEG   n01644373       n01644900      
+1569     ILSVRC2012_val_00020321.JPEG   n01644373       n01644900      
+1601     ILSVRC2012_val_00001938.JPEG   n01644900       n01641577      
+1602     ILSVRC2012_val_00004427.JPEG   n01644900       n01641577      
+1603     ILSVRC2012_val_00004724.JPEG   n01644900       n01644373      
+1604     ILSVRC2012_val_00005450.JPEG   n01644900       n01644373      
+
+... and 4573 more
+
+SKIPPED UNCERTAIN SAMPLES (First 100)
+--------------------------------------------------------------------------------
+Index    Filename                       Folder         
+--------------------------------------------------------------------------------
+50       ILSVRC2012_val_00000236.JPEG   n01443537      
+175      ILSVRC2012_val_00028564.JPEG   n01491361      
+196      ILSVRC2012_val_00046159.JPEG   n01491361      
+197      ILSVRC2012_val_00047326.JPEG   n01491361      
+200      ILSVRC2012_val_00001676.JPEG   n01494475      
+240      ILSVRC2012_val_00040843.JPEG   n01494475      
+262      ILSVRC2012_val_00009237.JPEG   n01496331      
+276      ILSVRC2012_val_00022387.JPEG   n01496331      
+278      ILSVRC2012_val_00023916.JPEG   n01496331      
+294      ILSVRC2012_val_00044657.JPEG   n01496331      
+365      ILSVRC2012_val_00012484.JPEG   n01514668      
+383      ILSVRC2012_val_00028712.JPEG   n01514668      
+396      ILSVRC2012_val_00047137.JPEG   n01514668      
+534      ILSVRC2012_val_00034864.JPEG   n01530575      
+610      ILSVRC2012_val_00007129.JPEG   n01532829      
+646      ILSVRC2012_val_00048144.JPEG   n01532829      
+721      ILSVRC2012_val_00025037.JPEG   n01537544      
+765      ILSVRC2012_val_00019082.JPEG   n01558993      
+779      ILSVRC2012_val_00030475.JPEG   n01558993      
+805      ILSVRC2012_val_00001720.JPEG   n01560419      
+813      ILSVRC2012_val_00011267.JPEG   n01560419      
+821      ILSVRC2012_val_00018145.JPEG   n01560419      
+824      ILSVRC2012_val_00020788.JPEG   n01560419      
+830      ILSVRC2012_val_00026929.JPEG   n01560419      
+838      ILSVRC2012_val_00034720.JPEG   n01560419      
+841      ILSVRC2012_val_00041990.JPEG   n01560419      
+843      ILSVRC2012_val_00042600.JPEG   n01560419      
+844      ILSVRC2012_val_00044009.JPEG   n01560419      
+1008     ILSVRC2012_val_00009597.JPEG   n01601694      
+1011     ILSVRC2012_val_00012797.JPEG   n01601694      
+1049     ILSVRC2012_val_00049775.JPEG   n01601694      
+1055     ILSVRC2012_val_00001488.JPEG   n01608432      
+1056     ILSVRC2012_val_00001813.JPEG   n01608432      
+1075     ILSVRC2012_val_00026444.JPEG   n01608432      
+1079     ILSVRC2012_val_00030094.JPEG   n01608432      
+1080     ILSVRC2012_val_00030292.JPEG   n01608432      
+1165     ILSVRC2012_val_00014220.JPEG   n01616318      
+1326     ILSVRC2012_val_00021083.JPEG   n01630670      
+1334     ILSVRC2012_val_00032171.JPEG   n01630670      
+1341     ILSVRC2012_val_00043049.JPEG   n01630670      
+1349     ILSVRC2012_val_00049997.JPEG   n01630670      
+1396     ILSVRC2012_val_00043003.JPEG   n01631663      
+1480     ILSVRC2012_val_00031386.JPEG   n01632777      
+1498     ILSVRC2012_val_00047938.JPEG   n01632777      
+1503     ILSVRC2012_val_00004945.JPEG   n01641577      
+1505     ILSVRC2012_val_00006409.JPEG   n01641577      
+1506     ILSVRC2012_val_00009563.JPEG   n01641577      
+1512     ILSVRC2012_val_00014227.JPEG   n01641577      
+1600     ILSVRC2012_val_00000037.JPEG   n01644900      
+1635     ILSVRC2012_val_00036722.JPEG   n01644900      
+1642     ILSVRC2012_val_00043524.JPEG   n01644900      
+1647     ILSVRC2012_val_00047716.JPEG   n01644900      
+1659     ILSVRC2012_val_00014585.JPEG   n01664065      
+1680     ILSVRC2012_val_00036202.JPEG   n01664065      
+1702     ILSVRC2012_val_00000938.JPEG   n01665541      
+1713     ILSVRC2012_val_00010843.JPEG   n01665541      
+1733     ILSVRC2012_val_00031275.JPEG   n01665541      
+1737     ILSVRC2012_val_00038140.JPEG   n01665541      
+1746     ILSVRC2012_val_00047546.JPEG   n01665541      
+1747     ILSVRC2012_val_00047746.JPEG   n01665541      
+1752     ILSVRC2012_val_00004019.JPEG   n01667114      
+1767     ILSVRC2012_val_00022710.JPEG   n01667114      
+1778     ILSVRC2012_val_00029726.JPEG   n01667114      
+1782     ILSVRC2012_val_00032700.JPEG   n01667114      
+1785     ILSVRC2012_val_00036345.JPEG   n01667114      
+1786     ILSVRC2012_val_00036815.JPEG   n01667114      
+1789     ILSVRC2012_val_00038527.JPEG   n01667114      
+1790     ILSVRC2012_val_00039441.JPEG   n01667114      
+1805     ILSVRC2012_val_00008902.JPEG   n01667778      
+1810     ILSVRC2012_val_00010792.JPEG   n01667778      
+1817     ILSVRC2012_val_00014106.JPEG   n01667778      
+1820     ILSVRC2012_val_00017243.JPEG   n01667778      
+1828     ILSVRC2012_val_00028599.JPEG   n01667778      
+1837     ILSVRC2012_val_00034728.JPEG   n01667778      
+1840     ILSVRC2012_val_00038628.JPEG   n01667778      
+1898     ILSVRC2012_val_00048480.JPEG   n01669191      
+1906     ILSVRC2012_val_00006853.JPEG   n01675722      
+1909     ILSVRC2012_val_00009966.JPEG   n01675722      
+1918     ILSVRC2012_val_00016807.JPEG   n01675722      
+1968     ILSVRC2012_val_00017948.JPEG   n01677366      
+2027     ILSVRC2012_val_00030523.JPEG   n01682714      
+2091     ILSVRC2012_val_00042079.JPEG   n01685808      
+2132     ILSVRC2012_val_00035717.JPEG   n01687978      
+2144     ILSVRC2012_val_00044934.JPEG   n01687978      
+2165     ILSVRC2012_val_00015403.JPEG   n01688243      
+2172     ILSVRC2012_val_00020508.JPEG   n01688243      
+2251     ILSVRC2012_val_00004505.JPEG   n01692333      
+2252     ILSVRC2012_val_00005138.JPEG   n01692333      
+2289     ILSVRC2012_val_00041186.JPEG   n01692333      
+2295     ILSVRC2012_val_00045223.JPEG   n01692333      
+2314     ILSVRC2012_val_00018857.JPEG   n01693334      
+2325     ILSVRC2012_val_00026626.JPEG   n01693334      
+2332     ILSVRC2012_val_00033615.JPEG   n01693334      
+2375     ILSVRC2012_val_00022997.JPEG   n01694178      
+2441     ILSVRC2012_val_00036971.JPEG   n01695060      
+2510     ILSVRC2012_val_00007238.JPEG   n01698640      
+2530     ILSVRC2012_val_00032796.JPEG   n01698640      
+2540     ILSVRC2012_val_00041665.JPEG   n01698640      
+2556     ILSVRC2012_val_00006120.JPEG   n01704323      
+2608     ILSVRC2012_val_00010830.JPEG   n01728572      
+
+... and 3063 more
+
+MULTI-LABEL SAMPLES (First 50)
+--------------------------------------------------------------------------------
+These samples have multiple valid labels. First valid label was used.
+Index    Filename                       Chosen   All Valid           
+--------------------------------------------------------------------------------
+1        ILSVRC2012_val_00002138.JPEG   0        [0, 758]            
+2        ILSVRC2012_val_00003014.JPEG   758      [758, 472]          
+10       ILSVRC2012_val_00010306.JPEG   0        [0, 133]            
+32       ILSVRC2012_val_00031094.JPEG   0        [0, 758]            
+35       ILSVRC2012_val_00037375.JPEG   0        [0, 391, 758]       
+102      ILSVRC2012_val_00004311.JPEG   2        [2, 3]              
+107      ILSVRC2012_val_00015157.JPEG   2        [2, 814]            
+110      ILSVRC2012_val_00016859.JPEG   2        [2, 3]              
+113      ILSVRC2012_val_00017194.JPEG   2        [2, 3]              
+115      ILSVRC2012_val_00019435.JPEG   2        [2, 3]              
+117      ILSVRC2012_val_00023185.JPEG   2        [2, 3]              
+130      ILSVRC2012_val_00032417.JPEG   2        [2, 3]              
+143      ILSVRC2012_val_00040098.JPEG   2        [2, 3, 973]         
+146      ILSVRC2012_val_00044052.JPEG   2        [2, 3]              
+151      ILSVRC2012_val_00002969.JPEG   3        [2, 3]              
+155      ILSVRC2012_val_00007875.JPEG   3        [2, 3]              
+164      ILSVRC2012_val_00019424.JPEG   3        [3, 147]            
+165      ILSVRC2012_val_00023443.JPEG   3        [2, 3]              
+166      ILSVRC2012_val_00023935.JPEG   801      [801, 983]          
+167      ILSVRC2012_val_00024854.JPEG   3        [3, 983]            
+174      ILSVRC2012_val_00026001.JPEG   3        [2, 3]              
+176      ILSVRC2012_val_00029300.JPEG   3        [2, 3]              
+177      ILSVRC2012_val_00029568.JPEG   3        [2, 3]              
+187      ILSVRC2012_val_00035405.JPEG   3        [2, 3]              
+188      ILSVRC2012_val_00035495.JPEG   3        [2, 3]              
+195      ILSVRC2012_val_00041635.JPEG   3        [2, 3]              
+199      ILSVRC2012_val_00049000.JPEG   3        [2, 3]              
+228      ILSVRC2012_val_00027160.JPEG   4        [3, 4]              
+252      ILSVRC2012_val_00004698.JPEG   6        [6, 983]            
+260      ILSVRC2012_val_00008963.JPEG   5        [5, 6]              
+282      ILSVRC2012_val_00028422.JPEG   5        [5, 6]              
+289      ILSVRC2012_val_00037260.JPEG   109      [109, 973]          
+291      ILSVRC2012_val_00041248.JPEG   5        [5, 6]              
+297      ILSVRC2012_val_00047080.JPEG   5        [5, 6]              
+315      ILSVRC2012_val_00023239.JPEG   6        [6, 842]            
+321      ILSVRC2012_val_00027415.JPEG   6        [5, 6]              
+329      ILSVRC2012_val_00033942.JPEG   6        [6, 983]            
+333      ILSVRC2012_val_00037753.JPEG   6        [3, 6]              
+339      ILSVRC2012_val_00040342.JPEG   6        [5, 6]              
+345      ILSVRC2012_val_00043229.JPEG   6        [6, 976]            
+348      ILSVRC2012_val_00046497.JPEG   6        [5, 6]              
+351      ILSVRC2012_val_00000911.JPEG   7        [8, 7]              
+355      ILSVRC2012_val_00004306.JPEG   7        [8, 7]              
+356      ILSVRC2012_val_00004463.JPEG   7        [84, 7]             
+358      ILSVRC2012_val_00005492.JPEG   7        [8, 7]              
+384      ILSVRC2012_val_00029921.JPEG   7        [7, 8]              
+386      ILSVRC2012_val_00035151.JPEG   7        [8, 7]              
+393      ILSVRC2012_val_00045107.JPEG   7        [7, 8]              
+398      ILSVRC2012_val_00048952.JPEG   7        [8, 7]              
+403      ILSVRC2012_val_00002372.JPEG   8        [8, 765]            
+
+... and 7393 more
+
+NOTES
+--------------------------------------------------------------------------------
+- Original folder remains UNTOUCHED
+- Fully corrected folder contains all samples with valid labels in CORRECT folders
+- Mislabeled samples were MOVED to their correct folders
+- Multi-label images: first valid label used (or current if valid)
+- Only uncertain samples (empty labels) were skipped
+- Labels reassessed by multiple expert annotators
+- This gives you the MAXIMUM clean dataset: 46,837 samples!
+- Google ReaL provides highest quality reassessment available
+- ReaL labels use PyTorch ImageFolder ordering (sorted WNIDs)

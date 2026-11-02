@@ -1,0 +1,3 @@
+optimizer,top1_mean_last_10_epochs,top5_mean_last_10_epochs
+AdaBelief,67.15239899999999,87.33179709999999
+Emoji (Proposed),67.7609992,87.7933984

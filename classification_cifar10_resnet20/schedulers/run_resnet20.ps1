@@ -1,0 +1,39 @@
+python main.py --model resnet20 --optim emojiabl --lr 1e-2 --emoji_betas 0.9 0.99 --emoji_eps 1e-8 --seed 1402 --emoji_weight_decouple True --weight_decay 5e-4 --scheduler warmupsteplr --lin_total_iters 250 --lin_start_factor 0.001 --steplr_stepsize 110 --timestamp --alphaa 0
+python main.py --model resnet20 --optim emojiabl --lr 1e-2 --emoji_betas 0.9 0.99 --emoji_eps 1e-8 --seed 8 --emoji_weight_decouple True --weight_decay 5e-4 --scheduler warmupsteplr --lin_total_iters 250 --lin_start_factor 0.001 --steplr_stepsize 110 --timestamp --alphaa 0
+python main.py --model resnet20 --optim emojiabl --lr 1e-2 --emoji_betas 0.9 0.99 --emoji_eps 1e-8 --seed 2025 --emoji_weight_decouple True --weight_decay 5e-4 --scheduler warmupsteplr --lin_total_iters 250 --lin_start_factor 0.001 --steplr_stepsize 110 --timestamp --alphaa 0
+python main.py --model resnet20 --optim emojiabl --lr 1e-2 --emoji_betas 0.9 0.99 --emoji_eps 1e-8 --seed 1993 --emoji_weight_decouple True --weight_decay 5e-4 --scheduler warmupsteplr --lin_total_iters 250 --lin_start_factor 0.001 --steplr_stepsize 110 --timestamp --alphaa 0
+
+python main.py --model resnet20 --optim emoji --lr 1e-2 --emoji_betas 0.9 0.99 --emoji_eps 1e-8 --seed 1402 --emoji_weight_decouple True --weight_decay 5e-4 --scheduler warmupsteplr --lin_total_iters 250 --lin_start_factor 0.001 --steplr_stepsize 110 --timestamp
+python main.py --model resnet20 --optim emoji --lr 1e-2 --emoji_betas 0.9 0.99 --emoji_eps 1e-8 --seed 8 --emoji_weight_decouple True --weight_decay 5e-4 --scheduler warmupsteplr --lin_total_iters 250 --lin_start_factor 0.001 --steplr_stepsize 110 --timestamp
+python main.py --model resnet20 --optim emoji --lr 1e-2 --emoji_betas 0.9 0.99 --emoji_eps 1e-8 --seed 2025 --emoji_weight_decouple True --weight_decay 5e-4 --scheduler warmupsteplr --lin_total_iters 250 --lin_start_factor 0.001 --steplr_stepsize 110 --timestamp
+python main.py --model resnet20 --optim emoji --lr 1e-2 --emoji_betas 0.9 0.99 --emoji_eps 1e-8 --seed 1993 --emoji_weight_decouple True --weight_decay 5e-4 --scheduler warmupsteplr --lin_total_iters 250 --lin_start_factor 0.001 --steplr_stepsize 110 --timestamp
+
+python main.py --model resnet20 --optim adabelief --lr 1e-2 --adabelief_betas 0.9 0.99 --eps 1e-8 --seed 1402 --adabelief_weight_decouple True --weight_decay 5e-4 --scheduler warmupsteplr --lin_total_iters 250 --lin_start_factor 0.001 --steplr_stepsize 110 --timestamp
+python main.py --model resnet20 --optim adabelief --lr 1e-2 --adabelief_betas 0.9 0.99 --eps 1e-8 --seed 8 --adabelief_weight_decouple True --weight_decay 5e-4 --scheduler warmupsteplr --lin_total_iters 250 --lin_start_factor 0.001 --steplr_stepsize 110 --timestamp
+python main.py --model resnet20 --optim adabelief --lr 1e-2 --adabelief_betas 0.9 0.99 --eps 1e-8 --seed 2025 --adabelief_weight_decouple True --weight_decay 5e-4 --scheduler warmupsteplr --lin_total_iters 250 --lin_start_factor 0.001 --steplr_stepsize 110 --timestamp
+python main.py --model resnet20 --optim adabelief --lr 1e-2 --adabelief_betas 0.9 0.99 --eps 1e-8 --seed 1993 --adabelief_weight_decouple True --weight_decay 5e-4 --scheduler warmupsteplr --lin_total_iters 250 --lin_start_factor 0.001 --steplr_stepsize 110 --timestamp
+
+python main.py --model resnet20 --optim adamw --lr 1e-2  --adamw_betas 0.9 0.99  --eps 1e-8 --seed 1402 --weight_decay 5e-4 --scheduler warmupsteplr --lin_total_iters 250 --lin_start_factor 0.001 --steplr_stepsize 110 --timestamp
+python main.py --model resnet20 --optim adamw --lr 1e-2  --adamw_betas 0.9 0.99  --eps 1e-8 --seed 8 --weight_decay 5e-4 --scheduler warmupsteplr --lin_total_iters 250 --lin_start_factor 0.001 --steplr_stepsize 110 --timestamp
+python main.py --model resnet20 --optim adamw --lr 1e-2  --adamw_betas 0.9 0.99  --eps 1e-8 --seed 2025 --weight_decay 5e-4 --scheduler warmupsteplr --lin_total_iters 250 --lin_start_factor 0.001 --steplr_stepsize 110 --timestamp
+python main.py --model resnet20 --optim adamw --lr 1e-2  --adamw_betas 0.9 0.99  --eps 1e-8 --seed 1993 --weight_decay 5e-4 --scheduler warmupsteplr --lin_total_iters 250 --lin_start_factor 0.001 --steplr_stepsize 110 --timestamp
+
+python main.py --model resnet20 --optim lion --lion_lr 1e-3 --lion_betas 0.9 0.99 --lion_weight_decay 5e-3 --seed 1402 --scheduler warmupsteplr --lin_total_iters 250 --lin_start_factor 0.001 --steplr_stepsize 110 --timestamp
+python main.py --model resnet20 --optim lion --lion_lr 1e-3 --lion_betas 0.9 0.99 --lion_weight_decay 5e-3 --seed 8 --scheduler warmupsteplr --lin_total_iters 250 --lin_start_factor 0.001 --steplr_stepsize 110 --timestamp
+python main.py --model resnet20 --optim lion --lion_lr 1e-3 --lion_betas 0.9 0.99 --lion_weight_decay 5e-3 --seed 2025 --scheduler warmupsteplr --lin_total_iters 250 --lin_start_factor 0.001 --steplr_stepsize 110 --timestamp
+python main.py --model resnet20 --optim lion --lion_lr 1e-3 --lion_betas 0.9 0.99 --lion_weight_decay 5e-3 --seed 1993 --scheduler warmupsteplr --lin_total_iters 250 --lin_start_factor 0.001 --steplr_stepsize 110 --timestamp
+
+python main.py --model resnet20 --optim sgdw --lr 0.1 --sgd_momentum 0.9 --sgdw_weight_decay 5e-4 --seed 1402 --scheduler warmupsteplr --lin_total_iters 250 --lin_start_factor 0.001 --steplr_stepsize 110 --timestamp 
+python main.py --model resnet20 --optim sgdw --lr 0.1 --sgd_momentum 0.9 --sgdw_weight_decay 5e-4 --seed 8 --scheduler warmupsteplr --lin_total_iters 250 --lin_start_factor 0.001 --steplr_stepsize 110 --timestamp 
+python main.py --model resnet20 --optim sgdw --lr 0.1 --sgd_momentum 0.9 --sgdw_weight_decay 5e-4 --seed 2025 --scheduler warmupsteplr --lin_total_iters 250 --lin_start_factor 0.001 --steplr_stepsize 110 --timestamp 
+python main.py --model resnet20 --optim sgdw --lr 0.1 --sgd_momentum 0.9 --sgdw_weight_decay 5e-4 --seed 1993 --scheduler warmupsteplr --lin_total_iters 250 --lin_start_factor 0.001 --steplr_stepsize 110 --timestamp 
+
+python main.py --model resnet20 --optim adaboundw --lr 1e-3 --adaboundw_betas 0.9 0.99 --adaboundw_weight_decay 5e-4 --seed 1402 --scheduler warmupsteplr --lin_total_iters 250 --lin_start_factor 0.001 --steplr_stepsize 110 --timestamp 
+python main.py --model resnet20 --optim adaboundw --lr 1e-3 --adaboundw_betas 0.9 0.99 --adaboundw_weight_decay 5e-4 --seed 8 --scheduler warmupsteplr --lin_total_iters 250 --lin_start_factor 0.001 --steplr_stepsize 110 --timestamp 
+python main.py --model resnet20 --optim adaboundw --lr 1e-3 --adaboundw_betas 0.9 0.99 --adaboundw_weight_decay 5e-4 --seed 2025 --scheduler warmupsteplr --lin_total_iters 250 --lin_start_factor 0.001 --steplr_stepsize 110 --timestamp 
+python main.py --model resnet20 --optim adaboundw --lr 1e-3 --adaboundw_betas 0.9 0.99 --adaboundw_weight_decay 5e-4 --seed 1993 --scheduler warmupsteplr --lin_total_iters 250 --lin_start_factor 0.001 --steplr_stepsize 110 --timestamp 
+
+python main.py --model resnet20 --optim yogi --yogi_lr 1e-2 --yogi_betas 0.9 0.99 --yogi_weight_decouple True --yogi_weight_decay 5e-4 --seed 1402 --scheduler warmupsteplr --lin_total_iters 250 --lin_start_factor 0.001 --steplr_stepsize 110 --timestamp 
+python main.py --model resnet20 --optim yogi --yogi_lr 1e-2 --yogi_betas 0.9 0.99 --yogi_weight_decouple True --yogi_weight_decay 5e-4 --seed 8 --scheduler warmupsteplr --lin_total_iters 250 --lin_start_factor 0.001 --steplr_stepsize 110 --timestamp 
+python main.py --model resnet20 --optim yogi --yogi_lr 1e-2 --yogi_betas 0.9 0.99 --yogi_weight_decouple True --yogi_weight_decay 5e-4 --seed 2025 --scheduler warmupsteplr --lin_total_iters 250 --lin_start_factor 0.001 --steplr_stepsize 110 --timestamp 
+python main.py --model resnet20 --optim yogi --yogi_lr 1e-2 --yogi_betas 0.9 0.99 --yogi_weight_decouple True --yogi_weight_decay 5e-4 --seed 1993 --scheduler warmupsteplr --lin_total_iters 250 --lin_start_factor 0.001 --steplr_stepsize 110 --timestamp 

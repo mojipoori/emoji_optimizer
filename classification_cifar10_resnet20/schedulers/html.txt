@@ -1,0 +1,3 @@
+document.querySelector("body > tb-webapp > main > router-outlet > router-outlet-component > tensorboard-wrapper-component > plugins > plugins-component > div > tf-scalar-dashboard").shadowRoot.querySelector("tf-dashboard-layout > div.center > tf-category-paginated-view:nth-child(9) > tf-scalar-card:nth-child(1)").shadowRoot.querySelector("#tf-line-chart-data-loader-container > tf-line-chart-data-loader").shadowRoot.querySelector("#chart").shadowRoot.querySelector("#chartdiv > div > div.component.component-group.main > div:nth-child(6) > div:nth-child(7)")
+
+<div class="component plot xy-plot line-plot" style="left: 0px; height: 377px; top: 0px; width: 323.419px;">

@@ -1,0 +1,10 @@
+{
+    "task": "qqp",
+    "learning_rate": 5e-5,
+    "batch_size": 128,
+    "albert_dropout": 0.1,
+    "classifier_dropout": 0.1,
+    "training_steps": 14000,
+    "warmup_steps": 1000,
+    "max_seq_length": 512
+}

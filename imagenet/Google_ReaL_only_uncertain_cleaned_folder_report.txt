@@ -1,0 +1,39 @@
+================================================================================
+Google ReaL Labels - Only Uncertain Cleaned Folder Report
+================================================================================
+
+Configuration:
+  Source directory: ILSVRC2012_img_val
+  Target directory: ILSVRC2012_img_val_Google_only_uncertain_cleaned
+  ReaL labels file: Google_ReaL_labels.json
+
+================================================================================
+Summary Statistics
+================================================================================
+
+Total samples in source:          50,000
+Samples copied (kept):            46,837 (93.67%)
+Samples skipped (uncertain):      3,163 (6.33%)
+
+================================================================================
+Important Notes
+================================================================================
+
+1. This folder contains ALL samples EXCEPT uncertain ones
+2. Mislabeled samples are KEPT in their ORIGINAL (wrong) folders
+3. Multi-label samples are KEPT in their current folders
+4. Only samples with empty ReaL labels [] are removed
+
+This is different from:
+  - 'CORRECTED' folder: only keeps correctly labeled samples
+  - 'FULLY_CORRECTED' folder: moves mislabeled to correct folders
+
+================================================================================
+Breakdown by Label Type
+================================================================================
+
+Single-label samples (1 valid label):  39,394 (84.11%)
+Multi-label samples (>1 valid label):  7,443 (15.89%)
+
+Note: Both single and multi-label samples kept in original folders
+      regardless of whether they are correctly or incorrectly labeled

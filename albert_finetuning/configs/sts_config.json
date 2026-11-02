@@ -1,0 +1,10 @@
+{
+    "task": "sts",
+    "learning_rate": 2e-5,
+    "batch_size": 16,
+    "albert_dropout": 0.0,
+    "classifier_dropout": 0.1,
+    "training_steps": 3598,
+    "warmup_steps": 214,
+    "max_seq_length": 512
+}

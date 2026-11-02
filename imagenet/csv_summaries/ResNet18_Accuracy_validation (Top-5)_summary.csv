@@ -1,0 +1,201 @@
+epoch,optimizer,mean,n_seeds
+0,AdaBelief,42.278,1
+1,AdaBelief,59.211998,1
+2,AdaBelief,65.841995,1
+3,AdaBelief,69.187996,1
+4,AdaBelief,73.299995,1
+5,AdaBelief,74.953995,1
+6,AdaBelief,75.995995,1
+7,AdaBelief,76.834,1
+8,AdaBelief,77.45,1
+9,AdaBelief,77.201996,1
+10,AdaBelief,79.848,1
+11,AdaBelief,78.082,1
+12,AdaBelief,75.439995,1
+13,AdaBelief,75.336,1
+14,AdaBelief,80.238,1
+15,AdaBelief,80.762,1
+16,AdaBelief,81.096,1
+17,AdaBelief,80.77,1
+18,AdaBelief,82.026,1
+19,AdaBelief,81.771996,1
+20,AdaBelief,82.093994,1
+21,AdaBelief,82.03,1
+22,AdaBelief,81.932,1
+23,AdaBelief,82.894,1
+24,AdaBelief,81.602,1
+25,AdaBelief,82.846,1
+26,AdaBelief,82.822,1
+27,AdaBelief,82.579994,1
+28,AdaBelief,82.644,1
+29,AdaBelief,83.602,1
+30,AdaBelief,86.238,1
+31,AdaBelief,86.29,1
+32,AdaBelief,86.528,1
+33,AdaBelief,86.563995,1
+34,AdaBelief,86.577995,1
+35,AdaBelief,86.6,1
+36,AdaBelief,86.65,1
+37,AdaBelief,86.642,1
+38,AdaBelief,86.537994,1
+39,AdaBelief,86.682,1
+40,AdaBelief,86.621994,1
+41,AdaBelief,86.537994,1
+42,AdaBelief,86.59,1
+43,AdaBelief,86.572,1
+44,AdaBelief,86.52,1
+45,AdaBelief,86.672,1
+46,AdaBelief,86.588,1
+47,AdaBelief,86.756,1
+48,AdaBelief,86.846,1
+49,AdaBelief,86.773994,1
+50,AdaBelief,86.652,1
+51,AdaBelief,86.642,1
+52,AdaBelief,86.535995,1
+53,AdaBelief,86.492,1
+54,AdaBelief,86.619995,1
+55,AdaBelief,86.521996,1
+56,AdaBelief,86.607994,1
+57,AdaBelief,86.512,1
+58,AdaBelief,86.626,1
+59,AdaBelief,86.766,1
+60,AdaBelief,87.026,1
+61,AdaBelief,87.154,1
+62,AdaBelief,87.15,1
+63,AdaBelief,87.186,1
+64,AdaBelief,87.152,1
+65,AdaBelief,87.159996,1
+66,AdaBelief,87.196,1
+67,AdaBelief,87.105995,1
+68,AdaBelief,87.13,1
+69,AdaBelief,87.189995,1
+70,AdaBelief,87.201996,1
+71,AdaBelief,87.228,1
+72,AdaBelief,87.229996,1
+73,AdaBelief,87.208,1
+74,AdaBelief,87.29,1
+75,AdaBelief,87.222,1
+76,AdaBelief,87.201996,1
+77,AdaBelief,87.189995,1
+78,AdaBelief,87.206,1
+79,AdaBelief,87.254,1
+80,AdaBelief,87.257996,1
+81,AdaBelief,87.285995,1
+82,AdaBelief,87.273994,1
+83,AdaBelief,87.224,1
+84,AdaBelief,87.324,1
+85,AdaBelief,87.214,1
+86,AdaBelief,87.268,1
+87,AdaBelief,87.301994,1
+88,AdaBelief,87.334,1
+89,AdaBelief,87.354,1
+90,AdaBelief,87.348,1
+91,AdaBelief,87.35,1
+92,AdaBelief,87.32,1
+93,AdaBelief,87.327995,1
+94,AdaBelief,87.368,1
+95,AdaBelief,87.357994,1
+96,AdaBelief,87.273994,1
+97,AdaBelief,87.315994,1
+98,AdaBelief,87.329994,1
+99,AdaBelief,87.326,1
+0,Emoji (Proposed),46.129997,1
+1,Emoji (Proposed),63.927998,1
+2,Emoji (Proposed),68.604,1
+3,Emoji (Proposed),72.35,1
+4,Emoji (Proposed),74.816,1
+5,Emoji (Proposed),77.063995,1
+6,Emoji (Proposed),77.895996,1
+7,Emoji (Proposed),78.799995,1
+8,Emoji (Proposed),78.686,1
+9,Emoji (Proposed),79.692,1
+10,Emoji (Proposed),79.778,1
+11,Emoji (Proposed),80.203995,1
+12,Emoji (Proposed),80.572,1
+13,Emoji (Proposed),81.096,1
+14,Emoji (Proposed),81.675995,1
+15,Emoji (Proposed),82.422,1
+16,Emoji (Proposed),82.546,1
+17,Emoji (Proposed),82.664,1
+18,Emoji (Proposed),82.355995,1
+19,Emoji (Proposed),82.916,1
+20,Emoji (Proposed),83.46,1
+21,Emoji (Proposed),82.978,1
+22,Emoji (Proposed),83.27,1
+23,Emoji (Proposed),83.383995,1
+24,Emoji (Proposed),83.63,1
+25,Emoji (Proposed),83.266,1
+26,Emoji (Proposed),83.105995,1
+27,Emoji (Proposed),83.82,1
+28,Emoji (Proposed),84.014,1
+29,Emoji (Proposed),83.894,1
+30,Emoji (Proposed),86.656,1
+31,Emoji (Proposed),86.86,1
+32,Emoji (Proposed),86.998,1
+33,Emoji (Proposed),87.088,1
+34,Emoji (Proposed),87.182,1
+35,Emoji (Proposed),87.208,1
+36,Emoji (Proposed),87.346,1
+37,Emoji (Proposed),87.315994,1
+38,Emoji (Proposed),87.444,1
+39,Emoji (Proposed),87.348,1
+40,Emoji (Proposed),87.383995,1
+41,Emoji (Proposed),87.348,1
+42,Emoji (Proposed),87.506,1
+43,Emoji (Proposed),87.348,1
+44,Emoji (Proposed),87.31,1
+45,Emoji (Proposed),87.376,1
+46,Emoji (Proposed),87.285995,1
+47,Emoji (Proposed),87.456,1
+48,Emoji (Proposed),87.252,1
+49,Emoji (Proposed),87.273994,1
+50,Emoji (Proposed),87.224,1
+51,Emoji (Proposed),87.304,1
+52,Emoji (Proposed),87.186,1
+53,Emoji (Proposed),87.36,1
+54,Emoji (Proposed),87.376,1
+55,Emoji (Proposed),87.341995,1
+56,Emoji (Proposed),87.546,1
+57,Emoji (Proposed),87.481995,1
+58,Emoji (Proposed),87.546,1
+59,Emoji (Proposed),87.59,1
+60,Emoji (Proposed),87.742,1
+61,Emoji (Proposed),87.82,1
+62,Emoji (Proposed),87.854,1
+63,Emoji (Proposed),87.836,1
+64,Emoji (Proposed),87.768,1
+65,Emoji (Proposed),87.726,1
+66,Emoji (Proposed),87.759995,1
+67,Emoji (Proposed),87.743996,1
+68,Emoji (Proposed),87.754,1
+69,Emoji (Proposed),87.778,1
+70,Emoji (Proposed),87.762,1
+71,Emoji (Proposed),87.745995,1
+72,Emoji (Proposed),87.82,1
+73,Emoji (Proposed),87.724,1
+74,Emoji (Proposed),87.757996,1
+75,Emoji (Proposed),87.759995,1
+76,Emoji (Proposed),87.771996,1
+77,Emoji (Proposed),87.798,1
+78,Emoji (Proposed),87.799995,1
+79,Emoji (Proposed),87.84,1
+80,Emoji (Proposed),87.773994,1
+81,Emoji (Proposed),87.77,1
+82,Emoji (Proposed),87.729996,1
+83,Emoji (Proposed),87.773994,1
+84,Emoji (Proposed),87.684,1
+85,Emoji (Proposed),87.768,1
+86,Emoji (Proposed),87.77,1
+87,Emoji (Proposed),87.714,1
+88,Emoji (Proposed),87.72,1
+89,Emoji (Proposed),87.824,1
+90,Emoji (Proposed),87.778,1
+91,Emoji (Proposed),87.77,1
+92,Emoji (Proposed),87.785995,1
+93,Emoji (Proposed),87.773994,1
+94,Emoji (Proposed),87.78,1
+95,Emoji (Proposed),87.808,1
+96,Emoji (Proposed),87.841995,1
+97,Emoji (Proposed),87.79,1
+98,Emoji (Proposed),87.812,1
+99,Emoji (Proposed),87.794,1

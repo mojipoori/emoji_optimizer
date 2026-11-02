@@ -1,0 +1,10 @@
+{
+    "task": "squad_v2",
+    "learning_rate": 3e-5,
+    "batch_size": 48,
+    "albert_dropout": 0.0,
+    "classifier_dropout": 0.1,
+    "training_steps": 8144,
+    "warmup_steps": 814,
+    "max_seq_length": 512
+}
