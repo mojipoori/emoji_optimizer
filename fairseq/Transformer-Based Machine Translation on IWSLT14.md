@@ -2,7 +2,10 @@
 
 We compared four optimizer implementations—AdamW, AdaBelief, EMOJI, and Lion—on the IWSLT14 German-to-English machine translation task using Fairseq. All runs used the `transformer_iwslt_de_en` architecture and the same dataset and shared training configuration. The experiment protocol used the same three random seeds (1993, 1402, and 2025) across optimizer configurations.
 
-Script Locations (relative to repository root)text├── fairseq/
+### Script Locations (relative to repository root)
+
+```text
+├── fairseq/
 │   ├── run_IWSLT_GE_2_EN.ps1
 │   ├── run_IWSLT_Sensivity.ps1
 │   └── run_IWSLT_Sensivity_1seed.ps1
@@ -12,7 +15,8 @@ Script Locations (relative to repository root)text├── fairseq/
     ├── plot_iwslt14_train_metrics_mean_var_all.py
     ├── plot_iwslt14_train_metrics_mean_var_per_seed.py
     ├── plot_iwslt14_train_metrics_mean_var.py
-    └── plot_iwslt14_train_metrics_sensitivity2.py
+    └── plot_iwslt14_train_metrics_sensivity2.py
+```
 
 ## Model architecture and training configuration
 
