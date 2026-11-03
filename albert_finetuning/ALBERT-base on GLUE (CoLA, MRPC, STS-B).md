@@ -4,6 +4,16 @@ This document describes the experimental setup, analysis scripts, and launchers 
 
 All analysis scripts and the training launcher reside under the corresponding experiment directory. TensorBoard event logs are stored in the `logs/` directory. The analysis scripts read these logs to compute means and standard deviations.
 
+### Script Locations (relative to repository root)
+
+```text
+albert_finetuning/
+├── final_cola_alloptim.py
+├── final_mrpc_alloptim.py
+├── final_sts_alloptim.py
+└── run_ALBERT_FN.ps1
+```
+
 ---
 
 ### Statistical Convention
