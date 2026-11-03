@@ -834,7 +834,7 @@ Default ε = 1e-8 is obtained by omitting the `--emoji-eps` / `--adabelief-eps` 
 
 ---
 
-**CIFAR-10 Image Classification with DenseNet121, ResNet20, and ResNet34**
+#CIFAR-10 Image Classification with DenseNet121, ResNet20, and ResNet34
 
 This document describes the experimental setup, analysis scripts, and launchers for comparing optimizers on CIFAR-10 image classification. The experiments cover three architectures (DenseNet121, ResNet20, ResNet34) and evaluate both a full multi-optimizer comparison and a focused ablation of the EMOJI centering mechanism.
 
