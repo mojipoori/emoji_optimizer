@@ -2,6 +2,16 @@
 
 This document describes the experimental setup for evaluating the proposed EMOJI optimizer against AdaBelief on ImageNet-1K using the ResNet-18 architecture.
 
+### Script Locations (relative to repository root)
+
+```text
+imagenet/
+├── main_when_copy_2.py
+├── final_resnet18alloptimsfig.py
+├── run.ps1
+└── imagenet_evaluation.ps1
+```
+
 ---
 
 ### Experimental Protocol
