@@ -155,6 +155,9 @@ Models were evaluated on the official ImageNet-1K validation set (50,000 images)
 Checkpoints were evaluated at epochs 30, 60, 90, the best validation checkpoint, and the final epoch (100).
 
 ---
+**Updated section for the Markdown:**
+
+---
 
 ### Analysis Script
 
@@ -164,6 +167,14 @@ Checkpoints were evaluated at epochs 30, 60, 90, the best validation checkpoint,
 - Plots Top-1 and Top-5 validation accuracy curves.
 - Computes the mean of the last 10 epochs for both Top-1 and Top-5 accuracy.
 - Saves summary CSVs and SVG figures.
+
+**Per-epoch training logs (CSV):**
+
+- AdaBelief:  
+  `model-resnet18-optimizer-adabelief-lr-0.001-epochs-100-decay-epoch-[30, 60, 90]-eps1e-08-beta10.9-beta20.99901-centralize-False-resetFalse-start-epoch-None-l2-decay0.01-l1-decay0.0-batch-256-warmup-False-fixed-decay-False.csv`
+
+- EMOJI (Proposed):  
+  `model-resnet18-optimizer-emoji-lr-0.001-epochs-100-decay-epoch-[30, 60, 90]-emoji_eps1e-08-emoji_beta10.9-emoji_beta20.999-start-epoch-None-l2-decay0.01-l1-decay0.0-batch-256-warmup-False-fixed-decay-False.csv`
 
 **Outputs:**
 
