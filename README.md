@@ -105,7 +105,8 @@ The epsilon values for Yogi and AdaBound were selected based on their respective
 | Yogi       | 10⁻³ |
 | AdaBound   | 10⁻⁸ |
 | EMOJI      | 10⁻⁸ |
-```
+
+---
 
 # GPT-style Transformer Language Modeling on WikiText-2
 
