@@ -1,0 +1,109 @@
+model,task,dataset,metric,optimizer,seed,last_10_epoch_mean
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,train_loss,AdaBelief,seed1402,4.293000
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,train_loss,AdaBelief,seed1993,4.300500
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,train_loss,AdaBelief,seed2025,4.266300
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,train_loss,AdaBelief (ε=1e-12),seed1402,3.209200
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,train_loss,AdaBelief (ε=1e-12),seed1993,3.220200
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,train_loss,AdaBelief (ε=1e-12),seed2025,3.204600
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,train_loss,AdaBelief (ε=1e-16),seed1402,3.201700
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,train_loss,AdaBelief (ε=1e-16),seed1993,3.210500
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,train_loss,AdaBelief (ε=1e-16),seed2025,3.196000
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,train_loss,AdamW,seed1402,3.206000
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,train_loss,AdamW,seed1993,3.214100
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,train_loss,AdamW,seed2025,3.193500
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,train_loss,Emoji (Proposed),seed1402,3.212000
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,train_loss,Emoji (Proposed),seed1993,3.213400
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,train_loss,Emoji (Proposed),seed2025,3.200400
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,train_loss,"Emoji (α=0, Without Centering)",seed1402,3.205300
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,train_loss,"Emoji (α=0, Without Centering)",seed1993,3.212100
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,train_loss,"Emoji (α=0, Without Centering)",seed2025,3.197000
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,train_loss,Emoji (ε=1e-12),seed1402,3.206100
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,train_loss,Emoji (ε=1e-12),seed1993,3.214400
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,train_loss,Emoji (ε=1e-12),seed2025,3.206100
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,train_loss,Emoji (ε=1e-16),seed1402,3.210900
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,train_loss,Emoji (ε=1e-16),seed1993,3.218700
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,train_loss,Emoji (ε=1e-16),seed2025,3.199500
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,train_loss,Lion,seed1402,3.231800
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,train_loss,Lion,seed1993,3.238900
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,train_loss,Lion,seed2025,3.221400
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,valid_bleu,AdaBelief,seed1402,27.706000
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,valid_bleu,AdaBelief,seed1993,27.802000
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,valid_bleu,AdaBelief,seed2025,28.270000
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,valid_bleu,AdaBelief (ε=1e-12),seed1402,35.203000
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,valid_bleu,AdaBelief (ε=1e-12),seed1993,35.337000
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,valid_bleu,AdaBelief (ε=1e-12),seed2025,35.205000
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,valid_bleu,AdaBelief (ε=1e-16),seed1402,35.197000
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,valid_bleu,AdaBelief (ε=1e-16),seed1993,35.196000
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,valid_bleu,AdaBelief (ε=1e-16),seed2025,35.215000
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,valid_bleu,AdamW,seed1402,35.184000
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,valid_bleu,AdamW,seed1993,35.243000
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,valid_bleu,AdamW,seed2025,35.299000
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,valid_bleu,Emoji (Proposed),seed1402,35.125000
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,valid_bleu,Emoji (Proposed),seed1993,35.390000
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,valid_bleu,Emoji (Proposed),seed2025,35.314000
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,valid_bleu,"Emoji (α=0, Without Centering)",seed1402,35.261000
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,valid_bleu,"Emoji (α=0, Without Centering)",seed1993,35.212000
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,valid_bleu,"Emoji (α=0, Without Centering)",seed2025,35.196000
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,valid_bleu,Emoji (ε=1e-12),seed1402,35.221000
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,valid_bleu,Emoji (ε=1e-12),seed1993,35.254000
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,valid_bleu,Emoji (ε=1e-12),seed2025,35.221000
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,valid_bleu,Emoji (ε=1e-16),seed1402,35.012000
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,valid_bleu,Emoji (ε=1e-16),seed1993,35.214000
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,valid_bleu,Emoji (ε=1e-16),seed2025,35.306000
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,valid_bleu,Lion,seed1402,34.943000
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,valid_bleu,Lion,seed1993,35.040000
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,valid_bleu,Lion,seed2025,35.024000
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,valid_loss,AdaBelief,seed1402,4.416400
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,valid_loss,AdaBelief,seed1993,4.409600
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,valid_loss,AdaBelief,seed2025,4.376200
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,valid_loss,AdaBelief (ε=1e-12),seed1402,3.867900
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,valid_loss,AdaBelief (ε=1e-12),seed1993,3.871800
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,valid_loss,AdaBelief (ε=1e-12),seed2025,3.860900
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,valid_loss,AdaBelief (ε=1e-16),seed1402,3.868700
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,valid_loss,AdaBelief (ε=1e-16),seed1993,3.867300
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,valid_loss,AdaBelief (ε=1e-16),seed2025,3.865400
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,valid_loss,AdamW,seed1402,3.876600
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,valid_loss,AdamW,seed1993,3.872100
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,valid_loss,AdamW,seed2025,3.869200
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,valid_loss,Emoji (Proposed),seed1402,3.869000
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,valid_loss,Emoji (Proposed),seed1993,3.862700
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,valid_loss,Emoji (Proposed),seed2025,3.864800
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,valid_loss,"Emoji (α=0, Without Centering)",seed1402,3.873500
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,valid_loss,"Emoji (α=0, Without Centering)",seed1993,3.874400
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,valid_loss,"Emoji (α=0, Without Centering)",seed2025,3.872600
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,valid_loss,Emoji (ε=1e-12),seed1402,3.865000
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,valid_loss,Emoji (ε=1e-12),seed1993,3.868300
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,valid_loss,Emoji (ε=1e-12),seed2025,3.865000
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,valid_loss,Emoji (ε=1e-16),seed1402,3.870600
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,valid_loss,Emoji (ε=1e-16),seed1993,3.870600
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,valid_loss,Emoji (ε=1e-16),seed2025,3.862700
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,valid_loss,Lion,seed1402,3.888600
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,valid_loss,Lion,seed1993,3.888100
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,valid_loss,Lion,seed2025,3.886600
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,valid_ppl,AdaBelief,seed1402,7.455000
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,valid_ppl,AdaBelief,seed1993,7.448000
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,valid_ppl,AdaBelief,seed2025,7.253000
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,valid_ppl,AdaBelief (ε=1e-12),seed1402,4.986000
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,valid_ppl,AdaBelief (ε=1e-12),seed1993,4.995000
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,valid_ppl,AdaBelief (ε=1e-12),seed2025,4.956000
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,valid_ppl,AdaBelief (ε=1e-16),seed1402,4.989000
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,valid_ppl,AdaBelief (ε=1e-16),seed1993,4.980000
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,valid_ppl,AdaBelief (ε=1e-16),seed2025,4.977000
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,valid_ppl,AdamW,seed1402,5.020000
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,valid_ppl,AdamW,seed1993,5.001000
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,valid_ppl,AdamW,seed2025,4.985000
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,valid_ppl,Emoji (Proposed),seed1402,5.001000
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,valid_ppl,Emoji (Proposed),seed1993,4.968000
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,valid_ppl,Emoji (Proposed),seed2025,4.976000
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,valid_ppl,"Emoji (α=0, Without Centering)",seed1402,5.009000
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,valid_ppl,"Emoji (α=0, Without Centering)",seed1993,5.006000
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,valid_ppl,"Emoji (α=0, Without Centering)",seed2025,5.000000
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,valid_ppl,Emoji (ε=1e-12),seed1402,4.988000
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,valid_ppl,Emoji (ε=1e-12),seed1993,4.985000
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,valid_ppl,Emoji (ε=1e-12),seed2025,4.988000
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,valid_ppl,Emoji (ε=1e-16),seed1402,5.006000
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,valid_ppl,Emoji (ε=1e-16),seed1993,4.992000
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,valid_ppl,Emoji (ε=1e-16),seed2025,4.970000
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,valid_ppl,Lion,seed1402,5.047000
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,valid_ppl,Lion,seed1993,5.034000
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,valid_ppl,Lion,seed2025,5.034000
