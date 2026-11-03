@@ -95,7 +95,7 @@ The epsilon values for Yogi and AdaBound were selected based on their respective
 - For AdaBound, we used 𝜖 = 10⁻⁸, matching the default value specified in the authors’ official implementation.
 - For Adam and AdamW, we used 𝜖 = 10⁻⁸, consistent with the default value specified in the official PyTorch implementations.
 
-### Table 2: 𝜖 Values Used for Adaptive Optimizers Across Experiments
+### 𝜖 Values Used for Adaptive Optimizers Across Experiments
 
 | Optimizer  | 𝜖     |
 |------------|-------|
