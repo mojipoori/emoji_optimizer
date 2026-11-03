@@ -2,6 +2,18 @@
 
 We compared four optimizer implementations—AdamW, AdaBelief, EMOJI, and Lion—on the IWSLT14 German-to-English machine translation task using Fairseq. All runs used the `transformer_iwslt_de_en` architecture and the same dataset and shared training configuration. The experiment protocol used the same three random seeds (1993, 1402, and 2025) across optimizer configurations.
 
+Script Locations (relative to repository root)text├── fairseq/
+│   ├── run_IWSLT_GE_2_EN.ps1
+│   ├── run_IWSLT_Sensivity.ps1
+│   └── run_IWSLT_Sensivity_1seed.ps1
+└── checkpoints/
+    ├── plot_iwslt14_epsilon_sensitivity_combined.py
+    ├── plot_iwslt14_train_metrics_mean_var_ablation.py
+    ├── plot_iwslt14_train_metrics_mean_var_all.py
+    ├── plot_iwslt14_train_metrics_mean_var_per_seed.py
+    ├── plot_iwslt14_train_metrics_mean_var.py
+    └── plot_iwslt14_train_metrics_sensitivity2.py
+
 ## Model architecture and training configuration
 
 The models used Fairseq's `transformer_iwslt_de_en` architecture. The saved configuration inspected for the EMOJI run confirms six encoder layers and six decoder layers, 512-dimensional embeddings, feed-forward networks of dimension 1,024, and four attention heads in both the encoder and decoder. The model used ReLU activation, dropout of 0.3, zero attention and activation dropout, post-layer normalization, non-learned positional embeddings, and shared decoder input/output embeddings.
