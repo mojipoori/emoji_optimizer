@@ -7,8 +7,8 @@ We compared four optimizer implementations—AdamW, AdaBelief, EMOJI, and Lion�
 ```text
 ├── fairseq/
 │   ├── run_IWSLT_GE_2_EN.ps1
-│   ├── run_IWSLT_Sensivity.ps1
-│   └── run_IWSLT_Sensivity_1seed.ps1
+│   ├── run_IWSLT_Sensitivity.ps1
+│   └── run_IWSLT_Sensitivity_1seed.ps1
 └── checkpoints/
     ├── plot_iwslt14_epsilon_sensitivity_combined.py
     ├── plot_iwslt14_train_metrics_mean_var_ablation.py
