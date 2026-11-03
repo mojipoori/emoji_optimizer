@@ -15,7 +15,7 @@ We compared four optimizer implementations—AdamW, AdaBelief, EMOJI, and Lion�
     ├── plot_iwslt14_train_metrics_mean_var_all.py
     ├── plot_iwslt14_train_metrics_mean_var_per_seed.py
     ├── plot_iwslt14_train_metrics_mean_var.py
-    └── plot_iwslt14_train_metrics_sensivity2.py
+    └── plot_iwslt14_train_metrics_sensitivity2.py
 ```
 
 ## Model architecture and training configuration
