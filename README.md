@@ -1,3 +1,112 @@
+# EMOJI: Extension and Modification of AdaBelief for Adaptive Step Adjustment and Improved Robustness
+
+## Abstract
+
+We propose EMOJI, an adaptive gradient-based optimizer derived from AdaBelief that modifies the adaptive denominator in two ways: it removes the numerical-stability term 𝜖 from the recursive second-moment state (retaining it only in the final update for numerical stability), and centers the gradient prediction error before computing its second moment. A key motivation is the known sensitivity of AdaBelief to the placement and value of 𝜖. By removing 𝜖 from the recursive accumulation, EMOJI substantially reduces this sensitivity while maintaining competitive performance. We evaluate the method across image classification, language modeling, neural machine translation, and natural language understanding tasks. On CIFAR-10, EMOJI achieves the highest mean validation accuracy with ResNet-34 and DenseNet-121 and outperforms other adaptive optimizers on ResNet-20. It also attains lower perplexity than AdamW on GPT-style Transformer Language Modeling on WikiText-2, the best mean BLEU and perplexity on IWSLT14, and strong results on GLUE benchmarks. Specifically, it achieves the highest MCC on CoLA, matches Lion in accuracy on MRPC, and achieves the highest F1 score on MRPC. A large-scale comparison on ImageNet-1K further shows higher validation accuracy than AdaBelief. Epsilon-sensitivity experiments confirm that EMOJI remains stable across a wide range of 𝜖 values under the evaluated configurations, in contrast to the pronounced sensitivity observed for AdaBelief. Overall, these results indicate that a simple structural change to the recursive second-moment update can improve robustness without sacrificing competitive performance across diverse architectures and tasks. To ensure reproducibility, the complete source code, per-seed evaluations, and experimental configurations are publicly available at https://github.com/mojipoori/emoji_optimizer.
+
+## Overview of Modifications
+
+EMOJI introduces two modifications to the adaptive denominator of AdaBelief:
+
+1. It removes 𝜖 from the recursive second-moment state while retaining it in the final denominator.
+2. It centers the gradient prediction error before computing its second moment.
+
+We develop a theoretical analysis of these modifications and evaluate their effects through comparative experiments and sequential ablation studies.
+
+### Main Contributions
+
+1. We demonstrate that EMOJI exhibits substantially reduced sensitivity to the choice of 𝜖 compared with AdaBelief over the tested range, while maintaining stable performance across the evaluated values.
+2. We show that removing 𝜖 from the recursive second-moment state can substantially improve optimization performance under the evaluated training configurations.
+3. Through sequential ablation studies on language and vision tasks, we observe an additional, setting-dependent performance improvement from centering the gradient prediction error. The magnitude of this improvement varies across the evaluated architectures and tasks.
+
+## Algorithm 1: EMOJI
+
+**Require:**  
+- 𝜂 (learning rate)  
+- 𝛽₁, 𝛽₂ ∈ [0,1) (exponential decay rates)  
+- 𝑓(𝜃) (stochastic objective function with parameters 𝜃)  
+- 𝜃₀ (initial parameter vector)  
+- 𝜖 (small constant for numerical stability, default 10⁻⁸)
+
+**Initialization:**  
+- 𝑚₀ ← 0  (1st moment vector)  
+- 𝑣₀ ← 0  (mean of gradient deviation)  
+- 𝑗₀ ← 0  (centered variance of deviation)  
+- 𝑡 ← 0  (initialize timestep)
+
+**while** 𝜃ₜ not converged **do**  
+ 𝑡 ← 𝑡 + 1  
+ 𝑔ₜ ← ∇_𝜃 𝑓ₜ(𝜃ₜ₋₁)  (stochastic gradient at step 𝑡)  
+ 𝑚ₜ ← 𝛽₁ 𝑚ₜ₋₁ + (1 − 𝛽₁) 𝑔ₜ  (biased first moment estimate)  
+ 𝑑ₜ ← 𝑔ₜ − 𝑚ₜ  (gradient prediction error)  
+ 𝑣ₜ ← 𝛽₁ 𝑣ₜ₋₁ + (1 − 𝛽₁) 𝑑ₜ  (prediction-error mean, ≈ 𝔼[𝑑ₜ])  
+ 𝑗ₜ ← 𝛽₂ 𝑗ₜ₋₁ + (1 − 𝛽₂)(𝑑ₜ − 𝑣ₜ)²  (second central-moment, ≈ Var(𝑑ₜ))  
+ 𝑚̂ₜ ← 𝑚ₜ / (1 − 𝛽₁ᵗ)  (bias-corrected first moment)  
+ 𝑗̂ₜ ← 𝑗ₜ / (1 − 𝛽₂ᵗ)  (bias-corrected centered variance)  
+ 𝜃ₜ ← 𝜃ₜ₋₁ − 𝜂 𝑚̂ₜ / (√𝑗̂ₜ + 𝜖)  (parameter update)  
+
+**end while**  
+**return** 𝜃ₜ
+
+## Computational Complexity and Memory
+
+EMOJI preserves the element-wise structure of AdaBelief and therefore has the same asymptotic computational and memory complexity of 𝑂(𝑁) per optimization step, where 𝑁 is the number of trainable parameters. The centering mechanism introduces one additional parameter-sized state (the moving average of the prediction error), but does not change the asymptotic complexity.
+
+In our experiments, EMOJI and AdaBelief exhibited comparable peak GPU memory usage and similar practical wall-clock training times under the evaluated configurations. Although EMOJI maintains one extra optimizer state, we did not observe a substantial increase in memory consumption or training time relative to AdaBelief.
+
+## Experimental Setup
+
+We evaluate EMOJI on image classification, language modeling, machine translation, and fine-tuning tasks. We additionally conduct an ImageNet-1K experiment comparing EMOJI with AdaBelief to examine whether the observed benefits extend to large-scale image classification under more computationally demanding conditions.
+
+To account for stochastic variability, we use multiple random seeds where feasible, using the same set of seeds for all optimizers within each experiment to ensure consistent experimental conditions. This helps control for variability arising from factors such as weight initialization and data shuffling.
+
+To ensure a consistent comparison among optimizers, we applied the same weight decay formulation to all optimizers within each experiment. Depending on the experimental setting, we used either L2 regularization (coupled weight decay) or decoupled weight decay, allowing us to compare the optimizers under a common regularization protocol.
+
+**Note:** In our experiments, SGD denotes stochastic gradient descent with momentum, whereas SGDW denotes stochastic gradient descent with momentum and decoupled weight decay.
+
+Detailed experimental configurations, model architectures, hyperparameters, training schedules, and other implementation settings for each task are provided in Section S2 of the Supplementary Material.
+
+### Table 1: Weight Decay Formulations Used Across Benchmarks
+
+| Benchmark   | WD Type    |
+|-------------|------------|
+| CIFAR-10    | Decoupled |
+| WikiText-2  | Decoupled |
+| IWSLT14     | Decoupled |
+| CoLA        | Decoupled |
+| MRPC        | Decoupled |
+| STS-B       | Decoupled |
+| ImageNet-1K | Decoupled |
+
+### 4.1. Epsilon Selection and Fixed-Hyperparameter Evaluation
+
+To evaluate the robustness and scalability of the optimizers across different experimental scenarios under a common protocol, we fixed the numerical-stability constant at 𝜖 = 10⁻⁸ for all Adam, AdamW, AdaBelief, and EMOJI experiments throughout the main experiments.
+
+For AdaBelief, this choice is consistent with the configuration reported in the original AdaBelief paper, where 𝜖 = 10⁻⁸ was used for the reported CIFAR and ImageNet experiments.
+
+Importantly, the reported settings in the original paper differ in some cases from the later task-dependent recommendations provided in the official AdaBelief repository. The repository reports different recommended 𝜖 values for different tasks, including smaller values for Transformer-based models, and also notes that 𝜖 should be tuned according to the task.
+
+We therefore do not selectively apply these later task-dependent recommendations to AdaBelief in the main experiments. Doing so would introduce task-specific hyperparameter tuning for the baseline and would confound the fixed-hyperparameter comparison. Instead, we retain 𝜖 = 10⁻⁸ for AdaBelief throughout the primary experiments and investigate the effect of alternative 𝜖 values separately in the sensitivity analysis in Section 6.
+
+This fixed-𝜖 protocol is not intended to identify the individually optimal 𝜖 for each optimizer and task. Rather, it provides a common evaluation setting for examining whether the optimizers can maintain competitive and consistent performance across different architectures and tasks without task-specific 𝜖 tuning.
+
+The epsilon values for Yogi and AdaBound were selected based on their respective reference implementations and publications:
+- For Yogi, we used 𝜖 = 10⁻³, consistent with the original paper.
+- For AdaBound, we used 𝜖 = 10⁻⁸, matching the default value specified in the authors’ official implementation.
+- For Adam and AdamW, we used 𝜖 = 10⁻⁸, consistent with the default value specified in the official PyTorch implementations.
+
+### Table 2: 𝜖 Values Used for Adaptive Optimizers Across Experiments
+
+| Optimizer  | 𝜖     |
+|------------|-------|
+| Adam       | 10⁻⁸ |
+| AdamW      | 10⁻⁸ |
+| AdaBelief  | 10⁻⁸ |
+| Yogi       | 10⁻³ |
+| AdaBound   | 10⁻⁸ |
+| EMOJI      | 10⁻⁸ |
+```
+
 # GPT-style Transformer Language Modeling on WikiText-2
 
 We evaluated four optimization algorithms—AdamW, AdaBelief, EMOJI, and Lion—on autoregressive language modeling using WikiText-2. All experiments used the same GPT-style Transformer architecture, dataset splits, training configuration, and set of three shared random seeds to support a consistent comparison across optimizers.
