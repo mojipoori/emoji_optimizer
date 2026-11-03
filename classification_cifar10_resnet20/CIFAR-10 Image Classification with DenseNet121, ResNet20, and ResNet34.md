@@ -4,6 +4,22 @@ This document describes the experimental setup, analysis scripts, and launchers 
 
 All scripts reside under the repository root `emoji_optimizer/classification_cifar10_resnet20`. Analysis scripts live at the relative paths listed below; training is launched via the PowerShell scripts in `schedulers/`.
 
+### Script Locations (relative to repository root)
+
+```text
+emoji_optimizer/classification_cifar10_resnet20/
+├── final_densenet121alloptimsfig.py.py
+├── final_resnet20alloptimsfig.py.py
+├── final_resnet34alloptimsfig.py
+├── ablation_meanstd95densnet121.py
+├── ablation_meanstd95resnet20.py
+├── ablation_meanstd95resnet34.py
+└── schedulers/
+    ├── run_densenet121.ps1
+    ├── run_resnet20.ps1
+    └── run_resnet34.ps1
+```
+
 ### Statistical Convention
 
 For every seed the representative value is the mean of the final 30 common epochs.
