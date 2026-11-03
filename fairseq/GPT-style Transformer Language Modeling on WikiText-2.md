@@ -109,7 +109,7 @@ This script focuses on three configurations:
 For clarity, α is not a hyperparameter of EMOJI and is introduced only in the ablation study to represent the presence or absence of the centering operation. The second-moment state in the ablation formulation is expressed as
 
 $$
-j_t = \operatorname{EMA}\left((d_t-\alpha v_t)^2\right).
+j_t = \mathrm{EMA}\big((d_t - \alpha v_t)^2\big).
 $$
 
 The EMOJI (α = 1, Proposed) configuration uses the centered gradient prediction error, whereas the No Centering variant omits this centering operation. Setting α = 0 therefore removes the centering term, making the resulting update theoretically equivalent to AdaBelief without ε in the recursive second-moment state. The proposed EMOJI configuration corresponds to the centered formulation.
