@@ -66,7 +66,7 @@ To ensure a consistent comparison among optimizers, we applied the same weight d
 
 Detailed experimental configurations, model architectures, hyperparameters, training schedules, and other implementation settings for each task are provided in Section S2 of the Supplementary Material.
 
-### Table 1: Weight Decay Formulations Used Across Benchmarks
+### Weight Decay Formulations Used Across Benchmarks
 
 | Benchmark   | WD Type    |
 |-------------|------------|
@@ -78,7 +78,7 @@ Detailed experimental configurations, model architectures, hyperparameters, trai
 | STS-B       | Decoupled |
 | ImageNet-1K | Decoupled |
 
-### 4.1. Epsilon Selection and Fixed-Hyperparameter Evaluation
+### Epsilon Selection and Fixed-Hyperparameter Evaluation
 
 To evaluate the robustness and scalability of the optimizers across different experimental scenarios under a common protocol, we fixed the numerical-stability constant at 𝜖 = 10⁻⁸ for all Adam, AdamW, AdaBelief, and EMOJI experiments throughout the main experiments.
 
