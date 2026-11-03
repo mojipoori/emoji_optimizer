@@ -1,0 +1,13 @@
+﻿optimizer,seed,epsilon,final_10_epoch_mean_valid_ppl
+Emoji,seed1993,1e-24,4.968999999999999
+Emoji,seed1993,1e-16,4.992
+Emoji,seed1993,1e-12,4.984999999999999
+Emoji,seed1993,1e-10,4.97
+Emoji,seed1993,1e-08,4.968
+Emoji,seed1993,1e-06,4.95
+AdaBelief,seed1993,1e-24,5.01
+AdaBelief,seed1993,1e-16,4.98
+AdaBelief,seed1993,1e-12,4.995
+AdaBelief,seed1993,1e-10,5.025
+AdaBelief,seed1993,1e-08,7.447999999999999
+AdaBelief,seed1993,1e-06,61.391

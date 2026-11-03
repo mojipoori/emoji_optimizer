@@ -1,0 +1,37 @@
+model,task,dataset,metric,optimizer,n_seeds,mean ± std
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,train_loss,Emoji (Proposed),3,3.2086 ± 0.0071
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,valid_loss,Emoji (Proposed),3,3.8655 ± 0.0032
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,valid_bleu,Emoji (Proposed),3,35.2763 ± 0.1365
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,valid_ppl,Emoji (Proposed),3,4.9817 ± 0.0172
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,train_loss,AdaBelief,3,4.2866 ± 0.0180
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,valid_loss,AdaBelief,3,4.4007 ± 0.0215
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,valid_bleu,AdaBelief,3,27.9260 ± 0.3018
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,valid_ppl,AdaBelief,3,7.3853 ± 0.1147
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,train_loss,AdaBelief (ε=1e-16),3,3.2027 ± 0.0073
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,valid_loss,AdaBelief (ε=1e-16),3,3.8671 ± 0.0017
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,valid_bleu,AdaBelief (ε=1e-16),3,35.2027 ± 0.0107
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,valid_ppl,AdaBelief (ε=1e-16),3,4.9820 ± 0.0062
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,train_loss,AdaBelief (ε=1e-12),3,3.2113 ± 0.0080
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,valid_loss,AdaBelief (ε=1e-12),3,3.8669 ± 0.0055
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,valid_bleu,AdaBelief (ε=1e-12),3,35.2483 ± 0.0768
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,valid_ppl,AdaBelief (ε=1e-12),3,4.9790 ± 0.0204
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,train_loss,AdamW,3,3.2045 ± 0.0104
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,valid_loss,AdamW,3,3.8726 ± 0.0037
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,valid_bleu,AdamW,3,35.2420 ± 0.0575
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,valid_ppl,AdamW,3,5.0020 ± 0.0175
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,train_loss,Lion,3,3.2307 ± 0.0088
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,valid_loss,Lion,3,3.8878 ± 0.0010
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,valid_bleu,Lion,3,35.0023 ± 0.0520
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,valid_ppl,Lion,3,5.0383 ± 0.0075
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,train_loss,"Emoji (α=0, Without Centering)",3,3.2048 ± 0.0076
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,valid_loss,"Emoji (α=0, Without Centering)",3,3.8735 ± 0.0009
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,valid_bleu,"Emoji (α=0, Without Centering)",3,35.2230 ± 0.0339
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,valid_ppl,"Emoji (α=0, Without Centering)",3,5.0050 ± 0.0046
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,train_loss,Emoji (ε=1e-12),3,3.2089 ± 0.0048
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,valid_loss,Emoji (ε=1e-12),3,3.8661 ± 0.0019
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,valid_bleu,Emoji (ε=1e-12),3,35.2320 ± 0.0191
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,valid_ppl,Emoji (ε=1e-12),3,4.9870 ± 0.0017
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,train_loss,Emoji (ε=1e-16),3,3.2097 ± 0.0097
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,valid_loss,Emoji (ε=1e-16),3,3.8680 ± 0.0046
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,valid_bleu,Emoji (ε=1e-16),3,35.1773 ± 0.1504
+IWSLT14 Transformer,Machine Translation,IWSLT14 De-En,valid_ppl,Emoji (ε=1e-16),3,4.9893 ± 0.0181
