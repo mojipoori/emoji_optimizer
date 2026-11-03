@@ -2,6 +2,18 @@
 
 We evaluated four optimization algorithms—AdamW, AdaBelief, EMOJI, and Lion—on autoregressive language modeling using WikiText-2. All experiments used the same GPT-style Transformer architecture, dataset splits, training configuration, and set of three shared random seeds to support a consistent comparison across optimizers.
 
+### Script Locations (relative to repository root)
+
+```text
+├── fairseq/
+│   ├── run_wiki_tr_gpt_loop.ps1
+│   └── plot_wikitext2_gpt_metrics_per_seed.py
+└── checkpoints/
+    ├── plot_wiki2_gpt_abl_all.py
+    ├── plot_wiki2_gpt_abl.py
+    └── plot_wiki2_gpt.py
+```
+
 ## Model architecture and training configuration
 
 The model was implemented using Fairseq's `transformer_lm_gpt` architecture. It comprised four Transformer decoder layers, an embedding dimension of 128, four attention heads per layer, and a feed-forward network dimension of 512. The model used GELU activation, dropout of 0.1, attention dropout of 0.1, shared input and output embeddings, and a maximum sequence length of 128 tokens.
