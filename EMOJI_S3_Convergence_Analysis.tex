@@ -1,0 +1,567 @@
+
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,bm}
+\usepackage{microtype}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage[nameinlink,noabbrev]{cleveref}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Prob}{\mathbb{P}}
+\newcommand{\diag}{\operatorname{diag}}
+\newcommand{\argmin}{\operatorname*{arg\,min}}
+\newcommand{\norm}[1]{\left\lVert #1\right\rVert}
+\newcommand{\abs}[1]{\left| #1\right|}
+\newcommand{\ip}[2]{\left\langle #1,#2\right\rangle}
+\newcommand{\od}{\,\mathrm{d}}
+\newcommand{\cO}{\mathcal{O}}
+
+\title{Supplementary Section S3: Convergence and Centering Analysis of EMOJI}
+\author{}
+\date{}
+\begin{document}
+\renewcommand{\thesection}{S\arabic{section}}
+\renewcommand{\thesubsection}{\thesection.\arabic{subsection}}
+\numberwithin{equation}{section}
+\setcounter{section}{2}
+\maketitle
+\section{Convergence analysis of EMOJI}
+
+\noindent\textbf{Scope.} This section analyzes the core EMOJI recursion in the manuscript. It has two purposes: (i) to establish a finite-time attenuation bound for the centered second-moment state relative to an uncentered reference computed from the same prediction-error sequence, and (ii) to derive deterministic and stochastic stationarity guarantees under explicit assumptions. The attenuation comparison is a same-sequence statement; it does not assert that two independently trained runs generate identical prediction errors. The convergence results apply to the core adaptive update and do not include the separate decoupled weight-decay step used in the experiments or any gradient-clipping operation that may be applied during training.
+
+\subsection{Algorithm and notation}
+We study the elementwise core EMOJI recursion with zero initialization. For a parameter vector $\theta_t\in\R^d$, let $g_t$ denote the gradient supplied to the optimizer at iteration $t$. For a fixed centering coefficient $\alpha\in[0,1]$, write
+\begin{align}
+ m_t&=\beta_1m_{t-1}+(1-\beta_1)g_t,
+ &d_t&=g_t-m_t,\label{eq:m-d}\\
+ v_t&=\beta_1v_{t-1}+(1-\beta_1)d_t,
+ &q_t&=d_t-\alpha v_t,\label{eq:v-q}\\
+ j_t&=\beta_2j_{t-1}+(1-\beta_2)q_t^{\odot2},
+ &\widehat m_t&=\frac{m_t}{1-\beta_1^t},\qquad
+ \widehat j_t=\frac{j_t}{1-\beta_2^t},\label{eq:j-bias}\\
+ \theta_t&=\theta_{t-1}-\eta_t A_t\widehat m_t,
+ &A_t&=\diag\!\left(\frac{1}{\sqrt{\widehat j_t}+\epsilon\mathbf 1}\right).
+ \label{eq:update}
+\end{align}
+All squares, square roots, and divisions in these equations are coordinatewise. The proposed EMOJI algorithm in the manuscript corresponds to $\alpha=1$; $\alpha=0$ is the uncentered ablation. We assume $\beta_1,\beta_2\in[0,1)$, $\alpha\in[0,1]$, and $\epsilon>0$. The stochastic-gradient vector $g_t$ is the quantity supplied to the optimizer; it is the exact gradient in the deterministic analysis and a stochastic oracle output in the stochastic analysis.
+
+The bias-corrected first moment has the exact representation
+\begin{equation}
+ \widehat m_t=\sum_{s=1}^t w_{t,s}g_s,
+ \qquad
+ w_{t,s}=\frac{(1-\beta_1)\beta_1^{t-s}}{1-\beta_1^t},
+ \qquad \sum_{s=1}^t w_{t,s}=1.
+ \label{eq:weights}
+\end{equation}
+Thus $\widehat m_t$ is a convex combination of the current and past supplied gradients. A useful exact identity, which follows from the fact that $m_t$ includes the current gradient, is
+\begin{equation}
+ d_t=\beta_1(g_t-m_{t-1}),\qquad
+ q_t=\bigl[1-\alpha(1-\beta_1)\bigr]d_t-\alpha\beta_1v_{t-1}.
+ \label{eq:residual-identity}
+\end{equation}
+In particular, for the proposed setting $\alpha=1$,
+\begin{equation}
+ q_t=d_t-v_t=\beta_1(d_t-v_{t-1}).
+ \label{eq:centered-identity}
+\end{equation}
+This identity is important: the quantity accumulated by $j_t$ is a filtered residual, not in general an unbiased estimate of the central variance of $d_t$.
+
+\subsection{Finite-time attenuation induced by centering}
+The centering mechanism can be compared with an uncentered second-moment accumulator driven by the \emph{same} prediction-error sequence. For this purpose, define
+\[
+ j_t^{\mathrm{raw}}=\beta_2j_{t-1}^{\mathrm{raw}}+(1-\beta_2)d_t^{\odot2},
+ \qquad j_0^{\mathrm{raw}}=0,
+\]
+while $j_t^{\mathrm{cen}}$ denotes the EMOJI state obtained from $q_t=d_t-v_t$ with $v_0=j_0^{\mathrm{cen}}=0$. Let the corresponding bias-corrected states be denoted by $\widehat j_t^{\mathrm{raw}}$ and $\widehat j_t^{\mathrm{cen}}$.
+
+\begin{proposition}[Finite-time attenuation of the centered second moment]\label{prop:attenuation}
+Let $\{d_t\}_{t=1}^T$ be any real-valued scalar sequence, let $v_t=\beta_1v_{t-1}+(1-\beta_1)d_t$ with $v_0=0$, and let $q_t=d_t-v_t$. Suppose
+\[
+ 0<\beta_1\leq\beta_2<1.
+\]
+Define
+\[
+ r:=\frac{\beta_1}{\sqrt{\beta_2}},
+ \qquad
+ \gamma:=\frac{\beta_1+r}{1+r}.
+\]
+Then $0<r<1$, $0<\gamma<1$, and for every $t\leq T$,
+\begin{equation}
+ \widehat j_t^{\mathrm{cen}}
+ \leq \gamma^2\widehat j_t^{\mathrm{raw}}.
+ \label{eq:attenuation}
+\end{equation}
+For vector-valued prediction errors, the inequality holds coordinatewise. No stationarity, independence, or distributional assumption on $d_t$ is required.
+\end{proposition}
+
+\begin{proof}
+The EMA recursion gives the exact finite-history representation
+\[
+ q_s=\beta_1d_s-(1-\beta_1)\sum_{\ell=1}^{s-1}\beta_1^{\ell}d_{s-\ell}.
+\]
+Fix a terminal time $t$ and define the exponentially weighted input and output sequences
+\[
+ x_s=\beta_2^{(t-s)/2}d_s,
+ \qquad y_s=\beta_2^{(t-s)/2}q_s,
+ \qquad 1\leq s\leq t.
+\]
+With $r=\beta_1/\sqrt{\beta_2}$, the relation between them is the first $t$ samples of the causal linear filter
+\[
+ y_s=\beta_1x_s-(1-\beta_1)\sum_{\ell=1}^{s-1}r^{\ell}x_{s-\ell}.
+\]
+Its transfer function is
+\[
+ H(z)=\beta_1-(1-\beta_1)\sum_{\ell=1}^{\infty}r^{\ell}z^{-\ell}
+ =\frac{\beta_1-rz^{-1}}{1-rz^{-1}}.
+\]
+The series is absolutely summable because $r<1$. On the unit circle, writing $c=\cos\omega$,
+\[
+ |H(e^{i\omega})|^2
+ =\frac{\beta_1^2+r^2-2\beta_1 r c}
+ {1+r^2-2rc}.
+\]
+Differentiating this expression with respect to $c$ gives
+\[
+ \frac{2r(\beta_1-1)(\beta_1-r^2)}
+ {(1+r^2-2rc)^2}\leq0,
+\]
+where the inequality follows from $r^2=\beta_1^2/\beta_2\leq\beta_1$. Hence the maximum occurs at $c=-1$, and
+\[
+ \sup_{\omega}|H(e^{i\omega})|
+ =\frac{\beta_1+r}{1+r}=\gamma.
+\]
+Extend $x_s$ by zero for $s>t$ and let the filter generate its full causal output. By Parseval's identity and the induced $\ell_2$ bound for a stable linear filter,
+\[
+ \sum_{s=1}^{t}y_s^2
+ \leq\sum_{s=1}^{\infty}y_s^2
+ \leq\gamma^2\sum_{s=1}^{\infty}x_s^2
+ =\gamma^2\sum_{s=1}^{t}x_s^2.
+\]
+Substituting the definitions of $x_s$ and $y_s$ yields
+\[
+ \sum_{s=1}^{t}\beta_2^{t-s}q_s^2
+ \leq\gamma^2\sum_{s=1}^{t}\beta_2^{t-s}d_s^2.
+\]
+Multiplication by the common positive bias-correction factor $(1-\beta_2)/(1-\beta_2^t)$ proves \eqref{eq:attenuation}. The vector result follows by applying the scalar argument independently to each coordinate.
+\end{proof}
+
+\begin{corollary}[Denominator reduction under a common prediction-error history]\label{cor:denom-attenuation}
+Under the assumptions of Proposition~\ref{prop:attenuation}, define
+\[
+ D_{t,i}^{\mathrm{cen}}=\sqrt{\widehat j_{t,i}^{\mathrm{cen}}}+\epsilon,
+ \qquad
+ D_{t,i}^{\mathrm{raw}}=\sqrt{\widehat j_{t,i}^{\mathrm{raw}}}+\epsilon.
+\]
+Then
+\begin{equation}
+ D_{t,i}^{\mathrm{cen}}
+ \leq\gamma\sqrt{\widehat j_{t,i}^{\mathrm{raw}}}+\epsilon
+ \leq D_{t,i}^{\mathrm{raw}}.
+ \label{eq:denominator-attenuation}
+\end{equation}
+The second inequality is strict whenever $\widehat j_{t,i}^{\mathrm{raw}}>0$. Thus the centered adaptive multiplier is at least as large as its uncentered same-history counterpart. Equivalently, when the raw state is nonzero,
+\[
+ \frac{D_{t,i}^{\mathrm{cen}}}{D_{t,i}^{\mathrm{raw}}}
+ \leq\frac{\gamma\sqrt{\widehat j_{t,i}^{\mathrm{raw}}}+\epsilon}
+ {\sqrt{\widehat j_{t,i}^{\mathrm{raw}}}+\epsilon}<1.
+\]
+The additive $\epsilon$ is not multiplied by $\gamma$; consequently, the proposition does not imply that the complete denominator is reduced by the factor $\gamma$. For example, when $\beta_1=0.9$ and $\beta_2=0.98$, $\gamma\approx0.9476$ and $\gamma^2\approx0.8980$, so the centered second-moment estimate is bounded by approximately $89.8\%$ of the raw estimate for the same prediction-error history.
+\end{corollary}
+
+\begin{remark}[Scope of the attenuation comparison]
+The bound concerns the accumulated, exponentially weighted second moment, not each instantaneous residual: it is possible to have $q_t^2>d_t^2$ at an individual iteration. The proposition controls the cumulative state at every finite time. It compares centered and raw accumulators on a common $d_t$ sequence; it does not guarantee the same inequality between two independent training runs after their parameter trajectories have diverged.
+\end{remark}
+
+\subsection{Standing assumptions and uniform bounds}
+The following assumptions are sufficient for the deterministic results.
+\begin{enumerate}[label=(A\arabic*)]
+ \item $f:\R^d\to\R$ is differentiable and $L$-smooth along every update segment $[\theta_{t-1},\theta_t]$; that is, $\norm{\nabla f(x)-\nabla f(y)}\le L\norm{x-y}$ for all $x,y$ on each such segment.
+ \item $f$ is bounded below on the iterates: $f(\theta)\ge f_{\inf}>-\infty$.
+ \item The gradients along the trajectory are bounded: $\norm{\nabla f(\theta_{t-1})}_2\le G$ for all $t$ under consideration.
+ \item The algorithm uses the exact recursion \eqref{eq:m-d}--\eqref{eq:update}, zero initial moments, fixed $\beta_1,\beta_2\in[0,1)$, $\alpha\in[0,1]$, a strictly positive $\epsilon$, and positive learning rates $\eta_t>0$.
+\end{enumerate}
+The bounded-gradient assumption can be replaced by boundedness of the iterates together with continuity of the gradient on a compact set. It is a trajectory assumption, not a claim that arbitrary neural-network objectives have globally bounded gradients.
+
+\begin{lemma}[Uniform bounds on EMOJI states and preconditioner]\label{lem:preconditioner}
+Suppose $\|g_t\|_2\leq G$ at every iteration and that the algorithm satisfies (A4). Define the lower spectral constant $\underline\mu$ by
+\begin{equation}
+ \underline\mu:=
+ \begin{cases}
+ (2\gamma G+\epsilon)^{-1},&\alpha=1\text{ and }0<\beta_1\leq\beta_2<1,\\
+ \epsilon^{-1},&\alpha=1\text{ and }\beta_1=0,\\
+ [2G(1+\alpha)+\epsilon]^{-1},&\text{otherwise},
+ \end{cases}
+ \qquad
+ M:=\epsilon^{-1},\qquad P:=G\epsilon^{-1},
+ \label{eq:constants}
+\end{equation}
+where $\gamma$ is defined in Proposition~\ref{prop:attenuation} whenever it is used. Then, for every $t$,
+\begin{equation}
+ \underline\mu I\preceq A_t\preceq MI,
+ \qquad \|\widehat m_t\|_2\leq G,
+ \qquad \|A_t\widehat m_t\|_2\leq P.
+ \label{eq:matrix-bounds}
+\end{equation}
+In particular, for the proposed centered setting with $\beta_2\geq\beta_1>0$, the attenuation result gives the sharper lower bound $\underline\mu=(2\gamma G+\epsilon)^{-1}$.
+\end{lemma}
+
+\begin{proof}
+The recursion for $m_t$ is an EMA with nonnegative coefficients whose sum is $1-\beta_1^t\leq1$. Hence $\|m_t\|_2\leq G$, and therefore $\|d_t\|_2=\|g_t-m_t\|_2\leq2G$. The same argument applied to the EMA for $v_t$ gives $\|v_t\|_2\leq2G$. Thus, for general $\alpha$, $\|q_t\|_2\leq2G(1+\alpha)$, which yields $\sqrt{\widehat j_{t,i}}\leq2G(1+\alpha)$.
+
+For $\alpha=1$ and $0<\beta_1\leq\beta_2$, Proposition~\ref{prop:attenuation} applies to the actual prediction-error history. The uncentered reference satisfies $\widehat j_{t,i}^{\mathrm{raw}}\leq4G^2$, because it is a bias-corrected EMA of $d_{t,i}^2$ and $|d_{t,i}|\leq2G$. Therefore
+\[
+ \widehat j_{t,i}^{\mathrm{cen}}
+ \leq\gamma^2\widehat j_{t,i}^{\mathrm{raw}}
+ \leq4\gamma^2G^2,
+\]
+so $\sqrt{\widehat j_{t,i}}\leq2\gamma G$. If $\alpha=1$ and $\beta_1=0$, then $m_t=g_t$, $d_t=v_t=j_t=0$, and the denominator equals $\epsilon$.
+
+In all cases, the denominator is at least $\epsilon$ and at most $\underline\mu^{-1}$. Taking coordinatewise reciprocals proves the spectral bounds. Finally, the bias-corrected first moment is a convex combination of vectors with norm at most $G$, so $\|\widehat m_t\|_2\leq G$. The update-direction bound follows from $\|A_t\|_2\leq M$.
+\end{proof}
+
+\begin{lemma}[Momentum-lag bound]\label{lem:lag}
+Suppose that $f$ is $L$-smooth and that the deterministic gradients satisfy (A3). Let
+\begin{equation}
+ e_t:=\widehat m_t-\nabla f(\theta_{t-1}),
+ \qquad
+ \Delta_t:=\frac{LG}{\epsilon}
+ \sum_{s=1}^{t}w_{t,s}\sum_{k=s}^{t-1}\eta_k,
+ \label{eq:Delta}
+\end{equation}
+where an empty inner sum is zero. Then $\norm{e_t}_2\le\Delta_t$. If $\eta_t\equiv\eta$, then
+\begin{equation}
+ \Delta_t\le K\eta,
+ \qquad K:=\frac{LG}{\epsilon}\frac{\beta_1}{1-\beta_1}.
+ \label{eq:K}
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+Using \eqref{eq:weights} and writing $h_t=\nabla f(\theta_{t-1})$,
+\[
+ e_t=\sum_{s=1}^tw_{t,s}(h_s-h_t).
+\]
+By smoothness and the update bound in Lemma~\ref{lem:preconditioner},
+\[
+ \norm{h_s-h_t}_2
+ \le\sum_{k=s}^{t-1}\norm{h_k-h_{k+1}}_2
+ \le L\sum_{k=s}^{t-1}\norm{\theta_k-\theta_{k-1}}_2
+ \le L\sum_{k=s}^{t-1}\eta_k\norm{A_k\widehat m_k}_2
+ \le\frac{LG}{\epsilon}\sum_{k=s}^{t-1}\eta_k.
+\]
+Averaging with the nonnegative weights gives \eqref{eq:Delta}. For constant $\eta$, the coefficient of $\eta$ is the expected age of the geometric weights:
+\[
+ \sum_{s=1}^tw_{t,s}(t-s)
+ =\frac{\sum_{r=0}^{t-1}r(1-\beta_1)\beta_1^r}{1-\beta_1^t}
+ \le\frac{\beta_1}{1-\beta_1}.
+\]
+This proves \eqref{eq:K}.
+\end{proof}
+
+\subsection{Deterministic nonconvex convergence}
+\begin{theorem}[Finite-time stationarity bound for deterministic EMOJI]\label{thm:det}
+Suppose (A1)--(A4) hold and $g_t=\nabla f(\theta_{t-1})$. Let
+$S_1=\sum_{t=1}^T\eta_t$ and $S_2=\sum_{t=1}^T\eta_t^2$. Then
+\begin{equation}
+ \frac{\sum_{t=1}^T\eta_t\norm{\nabla f(\theta_{t-1})}_2^2}{S_1}
+ \le
+ \frac{2\bigl(f(\theta_0)-f_{\inf}\bigr)}{\underline\mu S_1}
+ +\frac{M^2}{\underline\mu^2}
+   \frac{\sum_{t=1}^T\eta_t\Delta_t^2}{S_1}
+ +\frac{LP^2}{\underline\mu}\frac{S_2}{S_1},
+ \label{eq:det-general}
+\end{equation}
+where $\Delta_t$ is defined in \eqref{eq:Delta}. In particular, for a constant learning rate $\eta_t=\eta$,
+\begin{align}
+ \min_{1\le t\le T}\norm{\nabla f(\theta_{t-1})}_2^2
+ \le{}&\frac{2\bigl(f(\theta_0)-f_{\inf}\bigr)}{\underline\mu\eta T}
+ +\frac{M^2}{\underline\mu^2}K^2\eta^2
+ +\frac{LP^2}{\underline\mu}\eta.\label{eq:det-constant}
+\end{align}
+For fixed $\epsilon>0$, $\beta_1<1$, $G$, and $L$, choosing $\eta=\Theta(T^{-1/2})$ yields an $\cO(T^{-1/2})$ bound on the minimum squared gradient norm.
+\end{theorem}
+
+\begin{proof}
+Let $h_t=\nabla f(\theta_{t-1})$ and $e_t=\widehat m_t-h_t$. By Lemma~\ref{lem:preconditioner},
+\[
+ \ip{h_t}{A_t\widehat m_t}
+ =\ip{h_t}{A_th_t}+\ip{h_t}{A_te_t}
+ \ge\underline\mu\norm{h_t}_2^2-M\norm{h_t}_2\norm{e_t}_2.
+\]
+Young's inequality gives
+\begin{equation}
+ \ip{h_t}{A_t\widehat m_t}
+ \ge\frac{\underline\mu}{2}\norm{h_t}_2^2
+ -\frac{M^2}{2\underline\mu}\norm{e_t}_2^2.
+ \label{eq:alignment}
+\end{equation}
+The $L$-smoothness inequality and the update equation imply
+\[
+ f(\theta_t)\le f(\theta_{t-1})
+ -\eta_t\ip{h_t}{A_t\widehat m_t}
+ +\frac{L\eta_t^2}{2}\norm{A_t\widehat m_t}_2^2.
+\]
+Combining this inequality with \eqref{eq:alignment}, Lemmas~\ref{lem:preconditioner}--\ref{lem:lag}, and $f(\theta_T)\ge f_{\inf}$ yields
+\[
+ \frac{\underline\mu}{2}\sum_{t=1}^T\eta_t\norm{h_t}_2^2
+ \le f(\theta_0)-f_{\inf}
+ +\frac{M^2}{2\underline\mu}\sum_{t=1}^T\eta_t\Delta_t^2
+ +\frac{LP^2}{2}\sum_{t=1}^T\eta_t^2.
+\]
+Multiplication by $2/(\underline\mu S_1)$ proves \eqref{eq:det-general}. The constant-step result follows from $\Delta_t\le K\eta$, $S_1=T\eta$, and $S_2=T\eta^2$.
+\end{proof}
+
+\begin{remark}[Role of the centering attenuation bound]
+The descent proof uses the second-moment state to establish uniform spectral bounds on $A_t$. For the proposed setting $\alpha=1$ with $\beta_2\geq\beta_1$, Proposition~\ref{prop:attenuation} sharpens the lower spectral bound through $\underline\mu=(2\gamma G+\epsilon)^{-1}$. This improves the corresponding sufficient bound on the preconditioner relative to the crude estimate obtained from $|d_t-v_t|\leq4G$. It does not establish that two independently evolving optimizer trajectories have a fixed ordering of their updates, nor does it prove a smaller empirical loss or a universally faster convergence rate. The centering result is a same-history denominator comparison; the stationarity theorem is a separate guarantee for the actual core update.
+\end{remark}
+
+\begin{corollary}[Diminishing-step convergence to first-order stationarity]\label{cor:diminishing}
+Under the assumptions of Theorem~\ref{thm:det}, suppose $\eta_t=\eta_0(t+1)^{-p}$ for some $p\in(1/2,1]$. Then
+\[
+ \sum_{t=1}^{\infty}\eta_t\norm{\nabla f(\theta_{t-1})}_2^2<\infty,
+ \qquad
+ \lim_{t\to\infty}\norm{\nabla f(\theta_{t-1})}_2=0.
+\]
+Moreover, the weighted-average bound implies
+\[
+ \min_{1\le t\le T}\norm{\nabla f(\theta_{t-1})}_2^2
+ =\begin{cases}
+ \cO(T^{p-1}),&p\in(1/2,1),\\
+ \cO(1/\log T),&p=1.
+ \end{cases}
+\]
+\end{corollary}
+
+\begin{proof}
+For fixed $\beta_1<1$, the geometrically weighted lag in \eqref{eq:Delta} satisfies $\Delta_t=\cO(\eta_t)$ for a polynomially decreasing schedule with $p\in(0,1]$. To see this, split the lag index $r=t-s$ into $r\le t/2$ and $r>t/2$. In the first range, $\eta_{t-r}\le 2^p\eta_t$ and the geometric first moment $\sum_{r\ge0}r\beta_1^r$ is finite. In the second range, the geometric tail is exponentially small and dominates the at-most-polynomial growth of $\sum_{k=1}^t\eta_k$. Thus $\sum_t\eta_t\Delta_t^2=\cO(\sum_t\eta_t^3)<\infty$. Also $\sum_t\eta_t^2<\infty$ and $\sum_t\eta_t=\infty$. The telescoping inequality in the proof of Theorem~\ref{thm:det} therefore yields $\sum_t\eta_t\norm{h_t}_2^2<\infty$.
+
+By Lemma~\ref{lem:preconditioner}, $\norm{\theta_t-\theta_{t-1}}_2\le P\eta_t$, so smoothness gives
+$|\norm{h_{t+1}}_2-\norm{h_t}_2|\le LP\eta_t$. If $\norm{h_t}_2$ did not tend to zero, this bounded variation per unit step length, together with $\sum_t\eta_t=\infty$, would force infinitely many disjoint intervals on which $\norm{h_t}_2$ stays bounded away from zero; each such interval would contribute a fixed positive amount to $\sum_t\eta_t\norm{h_t}_2^2$, a contradiction. Hence $\norm{h_t}_2\to0$.
+\end{proof}
+
+\begin{corollary}[Polyak--Lojasiewicz objectives]\label{cor:pl}
+In addition to the assumptions of Theorem~\ref{thm:det}, suppose that $f$ satisfies the PL inequality
+\[
+ \norm{\nabla f(\theta)}_2^2\ge2\mu_{\rm PL}\bigl(f(\theta)-f_*\bigr)
+\]
+on the trajectory, where $f_*:=\inf_{\theta}f(\theta)$ is finite. Then, whenever $\mu_{\rm PL}\underline\mu\eta_t\le1$,
+\begin{equation}
+ f(\theta_t)-f_*
+ \le(1-\mu_{\rm PL}\underline\mu\eta_t)\bigl(f(\theta_{t-1})-f_*\bigr)
+ +\frac{M^2}{2\underline\mu}\eta_t\Delta_t^2
+ +\frac{LP^2}{2}\eta_t^2.
+ \label{eq:pl-recursion}
+\end{equation}
+Consequently, for $\eta_t=\eta_0(t+1)^{-p}$ with $p\in(1/2,1]$, the objective gap converges to zero. For a sufficiently small constant $\eta$, the objective gap contracts geometrically to an $\cO(\eta)$ neighborhood, as follows from the fixed point of \eqref{eq:pl-recursion}.
+\end{corollary}
+
+\begin{proof}
+Apply the one-step descent inequality established in the proof of Theorem~\ref{thm:det} and then use the PL inequality. The diminishing-step conclusion follows because $\sum_t\eta_t=\infty$ while the additive terms in \eqref{eq:pl-recursion} are summable by Corollary~\ref{cor:diminishing}. For constant $\eta$, Lemma~\ref{lem:lag} bounds the additive term by $\cO(\eta^2)$ per step, while the contraction coefficient differs from one by $\mu_{\rm PL}\underline\mu\eta$; their ratio is $\cO(\eta)$.
+\end{proof}
+
+\begin{remark}[The $\beta_1=0$ limiting case]
+If $\beta_1=0$, then $m_t=g_t$, $d_t=v_t=j_t=0$, and EMOJI reduces exactly to gradient descent with effective learning rate $\eta_t/\epsilon$. Thus the centering and second-moment mechanisms are inactive in this limit. This is a useful sanity check, but it is not representative of the intended momentum setting.
+\end{remark}
+
+\subsection{Stochastic convergence and the noise floor}
+Let $f(\theta)=\E_\zeta[\ell(\theta;\zeta)]$ be the population objective and let
+\[
+ g_t=\nabla f(\theta_{t-1})+\xi_t,
+ \qquad \E[\xi_t\mid\mathcal F_{t-1}]=0,
+ \qquad \E[\norm{\xi_t}_2^2\mid\mathcal F_{t-1}]\le\sigma_t^2,
+\]
+where $\{\xi_t\}$ is a martingale-difference sequence. Assume, in addition, that $\norm{g_t}_2\le G$ almost surely and that $f$ is $L$-smooth on a region containing the iterates and update segments, and is bounded below on the iterates. Define $e_t=\widehat m_t-\nabla f(\theta_{t-1})$ and $\Delta_t$ as in \eqref{eq:Delta}.
+
+\begin{lemma}[Mean-square tracking error]\label{lem:stoch-error}
+Under the preceding stochastic assumptions,
+\begin{equation}
+ \E\norm{e_t}_2^2
+ \le2\Delta_t^2+2\sum_{s=1}^t w_{t,s}^2\sigma_s^2.
+ \label{eq:stoch-error}
+\end{equation}
+Moreover, if $\sigma_s^2\le\sigma^2/B_s$ (e.g. a mini-batch of size $B_s$), then the second term is at most $2\sigma^2\sum_s w_{t,s}^2/B_s$. For constant $B_s=B$,
+\begin{equation}
+ W_t:=\sum_{s=1}^t w_{t,s}^2
+ =\frac{1-\beta_1}{1+\beta_1}\frac{1+\beta_1^t}{1-\beta_1^t}
+ \longrightarrow\frac{1-\beta_1}{1+\beta_1}.
+ \label{eq:W}
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+Using \eqref{eq:weights}, decompose
+\[
+ e_t=\underbrace{\sum_{s=1}^tw_{t,s}\bigl(\nabla f(\theta_{s-1})-\nabla f(\theta_{t-1})\bigr)}_{b_t}
+ +\underbrace{\sum_{s=1}^tw_{t,s}\xi_s}_{n_t}.
+\]
+The same argument as in Lemma~\ref{lem:lag} gives $\norm{b_t}_2\le\Delta_t$. Since the weights are deterministic and the noise is a martingale difference, the cross terms vanish in expectation and
+$\E\norm{n_t}_2^2\le\sum_s w_{t,s}^2\sigma_s^2$. Finally, use $\norm{b_t+n_t}^2\le2\norm{b_t}^2+2\norm{n_t}^2$. The formula for $W_t$ follows by summing the geometric series.
+\end{proof}
+
+\begin{theorem}[Stochastic EMOJI: finite-time stationarity bound]\label{thm:stoch}
+Under the stochastic assumptions above, let $S_1=\sum_{t=1}^T\eta_t$ and $S_2=\sum_{t=1}^T\eta_t^2$. Then
+\begin{align}
+ \frac{\sum_{t=1}^T\eta_t\E\norm{\nabla f(\theta_{t-1})}_2^2}{S_1}
+ \le{}&\frac{2(f(\theta_0)-f_{\inf})}{\underline\mu S_1}
+ +2\frac{M^2}{\underline\mu^2}
+ \frac{\sum_{t=1}^T\eta_t\left(\Delta_t^2+\sum_{s=1}^tw_{t,s}^2\sigma_s^2\right)}{S_1}
+ +\frac{LP^2}{\underline\mu}\frac{S_2}{S_1}.
+ \label{eq:stoch-general}
+\end{align}
+For a constant learning rate $\eta$ and constant mini-batch size $B$, this gives
+\begin{align}
+ \frac1T\sum_{t=1}^T\E\norm{\nabla f(\theta_{t-1})}_2^2
+ \le{}&\frac{2(f(\theta_0)-f_{\inf})}{\underline\mu\eta T}
+ +2\frac{M^2}{\underline\mu^2}
+ \left(K^2\eta^2+\frac{\sigma^2}{B}\,\frac1T\sum_{t=1}^TW_t\right)
+ +\frac{LP^2}{\underline\mu}\eta.
+ \label{eq:stoch-constant}
+\end{align}
+Thus, for fixed $B$ and fixed $\eta$, the limiting upper bound on the time-averaged expected squared gradient norm contains a step-size- and variance-dependent contribution proportional to $\sigma^2 B^{-1}(1-\beta_1)/(1+\beta_1)$. This is an average-stationarity bound; it does not imply pointwise convergence of the iterates or of every gradient norm. Increasing batch sizes or variance reduction can remove the noise contribution when they make the weighted noise term vanish.
+\end{theorem}
+
+\begin{proof}
+The uniform matrix bounds in Lemma~\ref{lem:preconditioner} hold almost surely. Therefore the alignment inequality \eqref{eq:alignment} is pathwise valid even though $A_t$ is random and depends on the current stochastic gradient. Apply the smoothness inequality pathwise, take expectations, use $\E f(\theta_T)\ge f_{\inf}$, and then apply Lemma~\ref{lem:stoch-error}. This yields \eqref{eq:stoch-general}. For constant $\eta$, Lemma~\ref{lem:lag} gives $\Delta_t\le K\eta$, and \eqref{eq:W} gives \eqref{eq:stoch-constant}.
+\end{proof}
+
+\begin{remark}[What is and is not proved in the stochastic setting]
+The theorem is a finite-time bound under a bounded stochastic-gradient oracle. With a fixed nonzero variance and fixed batch size, the limiting time-averaged bound retains a variance-dependent contribution; it does not establish convergence of the iterates or pointwise convergence to an exact stationary point. This is not merely a technicality: for $\beta_1>0$, the current preconditioner $A_t$ is constructed from a residual that uses the same stochastic sample as the update, so it is generally correlated with the noise. Unbiasedness of $g_t$ alone does not make $A_t\widehat m_t$ an unbiased preconditioned gradient. The separate expected objective-gap result in Theorem~\ref{thm:stoch-pl} requires the additional relative-tracking-error condition stated there. Neither that condition nor exact stochastic convergence follows from unbiasedness alone.
+\end{remark}
+
+\begin{theorem}[Stochastic PL convergence under relative tracking error]\label{thm:stoch-pl}
+Suppose the assumptions of Theorem~\ref{thm:stoch} hold and $f$ satisfies the PL inequality with constant $\mu_{\rm PL}>0$. Assume additionally that, for some $\rho\ge0$ and deterministic $\nu_t\ge0$,
+\begin{equation}
+ \E\norm{e_t}_2^2\le\rho\,\E\norm{\nabla f(\theta_{t-1})}_2^2+\nu_t,
+ \qquad
+ \rho<\left(\frac{\underline\mu}{M}\right)^2.
+ \label{eq:relative-error}
+\end{equation}
+Let $\kappa=1-(M/\underline\mu)^2\rho>0$. If $\mu_{\rm PL}\underline\mu\kappa\eta_t\le1$, $\sum_t\eta_t=\infty$, $\sum_t\eta_t^2<\infty$, and $\sum_t\eta_t\nu_t<\infty$, then
+\[
+ \E\bigl[f(\theta_t)-f_*\bigr]\longrightarrow0.
+\]
+\end{theorem}
+
+\begin{proof}
+Repeat the pathwise descent proof but use \eqref{eq:relative-error} after taking expectations. The coefficient of $\E\norm{\nabla f(\theta_{t-1})}^2$ becomes
+$\underline\mu/2-M^2\rho/(2\underline\mu)=\underline\mu\kappa/2$. The PL inequality therefore gives
+\[
+ \E[F_t]\le(1-\mu_{\rm PL}\underline\mu\kappa\eta_t)\E[F_{t-1}]
+ +\frac{M^2}{2\underline\mu}\eta_t\nu_t
+ +\frac{LP^2}{2}\eta_t^2,
+ \qquad F_t=f(\theta_t)-f_*.
+\]
+The contraction coefficients have a divergent sum, while the additive terms are summable. The standard deterministic comparison argument for nonnegative sequences then implies $\E[F_t]\to0$.
+\end{proof}
+
+\subsection{Statistical interpretation of the centered residual}
+The attenuation result above does not make $j_t$ an unbiased estimator of the central variance. Since $v_t$ includes the current $d_t$ and uses the same decay parameter as $m_t$,
+\[
+ d_t-v_t=\beta_1(d_t-v_{t-1}).
+\]
+Thus the residual is a temporally filtered (high-pass) version of $d_t$. Its second moment depends on the temporal autocovariance of $d_t$. The finite-time attenuation proposition is a deterministic energy comparison and does not require this stationary diagnostic model. In addition, if $\E[d_t]=\mu_d$ is constant and $v_0=0$, then
+\[
+ \E[v_t]=(1-\beta_1^t)\mu_d,
+ \qquad \E[d_t-v_t]=\beta_1^t\mu_d,
+\]
+so the uncorrected $v_t$ has a startup bias.
+
+\begin{proposition}[Stationary white-noise calculation for the actual EMOJI residual]\label{prop:white-noise}
+Consider a diagnostic stationary regime in which $g_t=\mu+\xi_t$, where $\{\xi_t\}$ are i.i.d., zero-mean, and have coordinatewise variance $\sigma^2$. Let $a=\beta_1\in(0,1)$ and assume the EMA states have reached stationarity. For the exact EMOJI definitions $d_t=g_t-m_t$ and $q_t=d_t-v_t$ with $\alpha=1$,
+\begin{equation}
+ \operatorname{Var}(d_t)=\frac{2a^2}{1+a}\sigma^2,
+ \qquad
+ \E[q_t^2]=\frac{2a^4(a+3)}{(1+a)^3}\sigma^2.
+ \label{eq:white-noise}
+\end{equation}
+Consequently,
+\begin{equation}
+ \frac{\E[q_t^2]}{\operatorname{Var}(d_t)}
+ =\frac{a^2(a+3)}{(1+a)^2},
+ \label{eq:ratio}
+\end{equation}
+which is generally not one (it equals approximately $0.875$ when $a=0.9$).
+\end{proposition}
+
+\begin{proof}
+Let $z_t=m_t-\mu$. Then $z_t=az_{t-1}+(1-a)\xi_t$ and $d_t=\xi_t-z_t=a(\xi_t-z_{t-1})$. Also $v_t=av_{t-1}+(1-a)d_t$. The state vector $x_t=(z_t,v_t)^\top$ follows
+\[
+ x_t=\begin{pmatrix}a&0\\-a(1-a)&a\end{pmatrix}x_{t-1}
+ +\begin{pmatrix}1-a\\a(1-a)\end{pmatrix}\xi_t.
+\]
+Solving the stationary discrete Lyapunov equation for $P=\E[x_tx_t^\top]/\sigma^2$ gives
+\[
+ P_{11}=\frac{1-a}{1+a},\quad
+ P_{12}=\frac{a(1-a)}{(1+a)^2},\quad
+ P_{22}=\frac{2a^2(1-a)}{(1+a)^3}.
+\]
+Moreover, \eqref{eq:centered-identity} gives $q_t=a^2\xi_t-a^2z_{t-1}-av_{t-1}$. Since $\xi_t$ is independent of the previous state, substituting the entries of $P$ yields the second formula in \eqref{eq:white-noise}. The variance of $d_t=a(\xi_t-z_{t-1})$ gives the first formula.
+\end{proof}
+
+\begin{remark}
+The calculation in Proposition~\ref{prop:white-noise} is not a model of a full nonstationary training trajectory; it is a counterexample to the general identity $\E[(d_t-v_t)^2]=\operatorname{Var}(d_t)$. It shows that even under a simple stationary oracle, the centering mechanism changes the scale of the accumulated statistic. A safer description is ``the EMA of the squared centered prediction-error residual'' rather than ``an unbiased estimate of the variance of the prediction error.''
+\end{remark}
+
+\subsection{Role of \texorpdfstring{$\epsilon$}{epsilon} and relationship to AdaBelief}
+For the AdaBelief implementation considered in the manuscript, which adds $\epsilon$ at every step of the second-moment recursion,
+\[
+ s_t=\beta_2s_{t-1}+(1-\beta_2)d_t^{\odot2}+\epsilon\mathbf1,
+\]
+zero initialization gives the exact bias-corrected decomposition
+\[
+ \widehat s_t
+ =\frac{(1-\beta_2)\sum_{r=1}^t\beta_2^{t-r}d_r^{\odot2}}{1-\beta_2^t}
+ +\frac{\epsilon}{1-\beta_2}\mathbf1.
+\]
+Hence its denominator has the coordinatewise lower bound
+$\sqrt{\epsilon/(1-\beta_2)}+\epsilon$. By contrast, EMOJI has
+$\sqrt{\widehat j_{t,i}}+\epsilon\ge\epsilon$ only. Removing the recursive $\epsilon$ removes the persistent additive floor $\epsilon/(1-\beta_2)$ from the bias-corrected state, but it also allows the adaptive multiplier to become as large as $1/\epsilon$. Thus post-root $\epsilon$ guarantees that division is finite for a fixed positive $\epsilon$, but it does not provide a bound uniform as $\epsilon\downarrow0$.
+
+This distinction is explicit in the convergence constants: $M=1/\epsilon$ and $P=G/\epsilon$. For the proposed centered setting with $0<\beta_1\leq\beta_2$, $M/\underline\mu=(2\gamma G+\epsilon)/\epsilon$; under the generic bound it is $(2G(1+\alpha)+\epsilon)/\epsilon$. The resulting rates are valid for each fixed $\epsilon>0$, but their constants deteriorate as $\epsilon$ decreases. Accordingly, the observed epsilon robustness in the experiments is an empirical property over the tested range, not a uniform-in-$\epsilon$ convergence guarantee.
+
+The $\alpha=0$ variant is an AdaBelief-type update with the recursive $\epsilon$ removed and with $\epsilon$ retained after the square root. It is not identical to the original AdaBelief implementation used in the manuscript's comparison. The $\alpha=1$ variant adds the extra state $v_t$ and the filtered residual $q_t$, so its second-moment dynamics require new analysis.
+
+\subsection{Relationship to existing adaptive-optimizer analyses}
+The nonconvex stochastic convergence theorem in the original AdaBelief analysis assumes, among other conditions, bounded true and noisy gradients, bounded noise variance, unbiased independent gradient noise, a positive lower bound on the initial second-moment coordinates, and a coordinatewise nondecreasing second-moment sequence $s_t$~\cite{Zhuang2020}. The paper notes that enforcing this monotonicity in the implementation requires an elementwise maximum operation. The EMOJI recursion analyzed here does not impose such a maximum: $j_t$ may decrease and may be zero, while only the final denominator is bounded below by $\epsilon$. Therefore, the original AdaBelief theorem cannot be transferred directly to EMOJI. The deterministic and stochastic guarantees in this supplement are proved for the EMOJI core update under their own stated assumptions.
+
+The broader adaptive-optimization literature also shows that exponential moving-average preconditioners can fail to converge in some settings without suitable temporal control~\cite{Reddi2018}. Analyses of adaptive methods in nonconvex stochastic optimization likewise retain explicit dependence on gradient-noise variance, providing relevant context for the variance term in Theorem~\ref{thm:stoch}~\cite{Zaheer2018}. FastAdaBelief studies a different algorithm under strong-convexity and algorithm-specific conditions~\cite{Zhou2023}; its guarantees likewise do not follow merely from EMOJI's relation to AdaBelief. These comparisons motivate proving guarantees for the actual recursion rather than relying on results for related optimizers.
+
+\subsection{Scope and limitations of the guarantees}
+The results above establish the following, and no more:
+\begin{itemize}
+ \item For the deterministic core update on an $L$-smooth, lower-bounded objective with gradients bounded along the trajectory and fixed $\epsilon>0$, Theorem~\ref{thm:det} gives a finite-time nonconvex stationarity bound. With a constant step size, the bound is of order $\cO((\eta T)^{-1}+\eta)$ when the remaining problem parameters are fixed. Under the polynomially diminishing schedules in Corollary~\ref{cor:diminishing}, the gradient norm tends to zero under the stated assumptions.
+ \item Under the additional PL condition, Corollary~\ref{cor:pl} gives convergence of the deterministic objective gap to zero for the stated diminishing schedules. With a sufficiently small constant step size, it gives geometric contraction to an $\cO(\eta)$ objective-gap neighborhood; it does not assert convergence of the parameter vectors themselves.
+ \item For $\alpha=1$ and $0<\beta_1\leq\beta_2$, Proposition~\ref{prop:attenuation} proves a finite-time reduction of the bias-corrected second-moment state relative to the uncentered accumulator driven by the same prediction-error sequence. This result does not imply pointwise attenuation at every iteration, nor does it compare independent training trajectories.
+ \item For stochastic gradients, Theorem~\ref{thm:stoch} gives a finite-time expected-stationarity bound with an explicit filtered-noise term. At fixed batch size and nonzero variance, its limiting time-averaged bound retains a variance-dependent contribution. The expected objective-gap result in Theorem~\ref{thm:stoch-pl} requires the additional relative-tracking-error condition stated there.
+ \item No global-optimality guarantee is obtained for a general nonconvex objective, and no convex online-regret guarantee is claimed for the unprojected EMOJI implementation. The constants depend on $1/\epsilon$, so the results are not uniform as $\epsilon\downarrow0$. The analysis concerns the core adaptive update and does not include the separate decoupled weight-decay step used in the experiments or any gradient-clipping operation. Extending the guarantees to the complete experimental training procedure would require additional terms and assumptions.
+\end{itemize}
+
+\begin{thebibliography}{99}
+\bibitem[3]{Zhuang2020}
+J.~Zhuang, T.~Tang, Y.~Ding, S.~C.~Tatikonda, N.~Dvornek, X.~Papademetris, and J.~S.~Duncan,
+``AdaBelief Optimizer: Adapting Stepsizes by the Belief in Observed Gradients,''
+\emph{Advances in Neural Information Processing Systems}, vol.~33, pp.~18795--18806, 2020.
+
+\bibitem[9]{Reddi2018}
+S.~J.~Reddi, S.~Kale, and S.~Kumar,
+``On the Convergence of Adam and Beyond,''
+\emph{International Conference on Learning Representations}, 2018.
+
+\bibitem[11]{Zaheer2018}
+M.~Zaheer, S.~J.~Reddi, D.~S.~Sachan, S.~Kale, and S.~Kumar,
+``Adaptive Methods for Nonconvex Optimization,''
+\emph{Advances in Neural Information Processing Systems}, vol.~31, 2018.
+
+\bibitem[16]{Zhou2023}
+Y.~Zhou, K.~Huang, C.~Cheng, X.~Wang, A.~Hussain, and X.~Liu,
+``FastAdaBelief: Improving Convergence Rate for Belief-Based Adaptive Optimizers by Exploiting Strong Convexity,''
+\emph{IEEE Transactions on Neural Networks and Learning Systems}, vol.~34, no.~9, pp.~6515--6529, 2023, doi: 10.1109/TNNLS.2022.3143554.
+\end{thebibliography}
+\end{document}
