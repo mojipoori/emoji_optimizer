@@ -32,15 +32,6 @@ OPTIMIZERS = {
 
     'AdaBelief': [
 
-        # 'runs/resnet20-adabelief-lr0.01-betas0.9-0.99-eps1e-08-wdecay0.0005-rectifyFalse-fixed_decayFalse-amsgradFalse-run0-seed1993-warmupsteplr--linT250-linS0.001-slrSS110-slrGam0.1-20251007-082007-resetFalse',
-
-        # 'runs/resnet20-adabelief-lr0.01-betas0.9-0.99-eps1e-08-wdecay0.0005-rectifyFalse-fixed_decayFalse-amsgradFalse-run0-seed1402-warmupsteplr--linT250-linS0.001-slrSS110-slrGam0.1-20251007-104138-resetFalse',
-
-        # 'runs/resnet20-adabelief-lr0.01-betas0.9-0.99-eps1e-08-wdecay0.0005-rectifyFalse-fixed_decayFalse-amsgradFalse-run0-seed2025-warmupsteplr--linT250-linS0.001-slrSS110-slrGam0.1-20251007-055840-resetFalse',
-
-        # 'runs/resnet20-adabelief-lr0.01-betas0.9-0.99-eps1e-08-wdecay0.0005-rectifyFalse-fixed_decayFalse-amsgradFalse-run0-seed8-warmupsteplr--linT250-linS0.001-slrSS110-slrGam0.1-20251006-192257-resetFalse'
-
-
         'runs/resnet20-adabelief-lr0.01-betas0.9-0.99-eps1e-08-wdecay0.0005-rectifyFalse-fixed_decayFalse-amsgradFalse-run0-seed1993-warmupsteplr--linT250-linS0.001-slrSS110-slrGam0.1-20260529-141148-resetFalse',
         'runs/resnet20-adabelief-lr0.01-betas0.9-0.99-eps1e-08-wdecay0.0005-rectifyFalse-fixed_decayFalse-amsgradFalse-run0-seed8-warmupsteplr--linT250-linS0.001-slrSS110-slrGam0.1-20260529-170743-resetFalse',
         'runs/resnet20-adabelief-lr0.01-betas0.9-0.99-eps1e-08-wdecay0.0005-rectifyFalse-fixed_decayFalse-amsgradFalse-run0-seed1402-warmupsteplr--linT250-linS0.001-slrSS110-slrGam0.1-20260529-201633-resetFalse',
@@ -49,15 +40,6 @@ OPTIMIZERS = {
     ],
 
     'Emoji (Proposed)': [
-
-      #'runs/resnet20-emoji-lr0.01-betas0.9-0.99-eps1e-08-wdecay0.0005-run0-seed8-wdcpl-warmupsteplr--linT250-linS0.001-slrSS110-slrGam0.1-20251006-050112-resetFalse',
-
-      #'runs/resnet20-emoji-lr0.01-betas0.9-0.99-eps1e-08-wdecay0.0005-run0-seed2025-wdcpl-warmupsteplr--linT250-linS0.001-slrSS110-slrGam0.1-20251006-225509-resetFalse',
-
-      #'runs/resnet20-emoji-lr0.01-betas0.9-0.99-eps1e-08-wdecay0.0005-run0-seed1402-wdcpl-warmupsteplr--linT250-linS0.001-slrSS110-slrGam0.1-20251007-033242-resetFalse',
-
-      #'runs/resnet20-emoji-lr0.01-betas0.9-0.99-eps1e-08-wdecay0.0005-run0-seed1993-wdcpl-warmupsteplr--linT250-linS0.001-slrSS110-slrGam0.1-20251007-010744-resetFalse',
-
 
         'runs/resnet20-emoji-lr0.01-betas0.9-0.99-eps1e-08-wdecay0.0005-run0-seed1993-wdcpl-warmupsteplr--linT250-linS0.001-slrSS110-slrGam0.1--wd0.0005-20260529-153653-resetFalse',
         'runs/resnet20-emoji-lr0.01-betas0.9-0.99-eps1e-08-wdecay0.0005-run0-seed8-wdcpl-warmupsteplr--linT250-linS0.001-slrSS110-slrGam0.1--wd0.0005-20260529-183924-resetFalse',
